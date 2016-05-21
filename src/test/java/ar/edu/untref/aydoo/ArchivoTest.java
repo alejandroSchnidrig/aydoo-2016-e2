@@ -30,15 +30,6 @@ public class ArchivoTest {
 		Assert.assertEquals("<img src=\"unaImagen.png\"/>", unArchivo.getContenidoElemento(4));
 
 	}
-	
-	@Test
-	public void ImprimeSinAgregarElementos() {
-
-		Archivo unArchivo = new Archivo("archivo.txt");
-		unArchivo.imprimir();
-		Assert.assertEquals("<h1>Titulo numero uno</h1>", unArchivo.getContenidoElemento(0));
-
-	}
 
 
 }
