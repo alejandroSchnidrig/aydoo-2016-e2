@@ -14,4 +14,12 @@ public class TextoPlanoTest {
 
 	}
 
+	@Test
+	public void ImprimeBienElTextoPlano() {
+
+		Elemento unaImagen = new TextoPlano("El texto es plano");
+
+		Assert.assertEquals("El texto es plano", unaImagen.imprimir());
+	}
+
 }
