@@ -11,7 +11,8 @@ public class LectorDeArchivoTest {
 	public void LeeyGuardaElArchivoEnUnaListaCorrectamente() throws IOException{
 		
 		LectorDeArchivo lector = new LectorDeArchivo();
-		lector.leerArchivo("/home/alejandro/aydoo-2016-e2/template/textoAProcesar.md");
+		String ruta = System.getProperty("user.dir");
+		lector.leerArchivo(ruta+"/template/textoAProcesar.md");
 		
 		Assert.assertEquals("#esto es un titulo", lector.getContenido(0));
 		Assert.assertEquals("##esto es un sub-titulo", lector.getContenido(1));
