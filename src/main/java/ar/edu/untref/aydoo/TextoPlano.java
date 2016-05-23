@@ -10,7 +10,6 @@ public class TextoPlano  extends Elemento {
 	public String imprimir() {
 
 		System.out.println(contenido);
-		this.setContenido(contenido);
 
 		return contenido;
 	}
