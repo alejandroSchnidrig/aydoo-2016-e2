@@ -33,5 +33,27 @@ public class SeccionTest {
 
 	}
 	
+	@Test
+	public void SeccionImprimeCuatroElementosCorrectamente() {
+
+		Seccion otraSeccion = new Seccion("");
+		Elemento unTitulo = new Titulo("#El Hobbit");
+		Elemento SubTitulo = new SubTitulo("##4000 años antes... ");
+		Elemento unaImagen = new Imagen("i:foto.png");
+		Elemento otroTitulo = new Titulo("#FIN");
+		
+		
+		otraSeccion.agregarElemento(unTitulo);
+		otraSeccion.agregarElemento(SubTitulo);
+		otraSeccion.agregarElemento(unaImagen);
+		otraSeccion.agregarElemento(otroTitulo);
+		
+
+		Assert.assertEquals("<section>\n<h1>El Hobbit</h1>\n<h2>4000 años antes... </h2>\n<img src=\"foto.png\"/>\n"
+																	+ "<h1>FIN</h1>\n</section>", otraSeccion.imprimir());
+																	
+
+	}
+	
 	
 }
