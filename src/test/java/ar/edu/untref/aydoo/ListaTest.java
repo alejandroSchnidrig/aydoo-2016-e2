@@ -50,10 +50,22 @@ public class ListaTest {
 	}
 	
 	@Test
-	public void NonmbreDeLaListaSeImprimeCorrectamente(){
-		Lista Lista = new Lista("soy una lista");
+	public void NombreDeLaListaSeImprimeCorrectamente(){
+		Lista lista = new Lista("soy una lista");
 		
-		Assert.assertEquals("soy una lista", Lista.getContenido());
+		Assert.assertEquals("soy una lista", lista.getContenido());
+	}
+	
+	@Test
+	public void ListaConQueContieneUnaSeccionSeImprimeCorrectamente(){
+		Lista lista = new Lista("");
+		Seccion seccion = new Seccion("");
+		Elemento unTitulo = new Titulo("#Un titulo");
+		
+		seccion.agregarElemento(unTitulo);
+		lista.agregarElemento(seccion);
+		
+		Assert.assertEquals("<lu>\n<li><section>\n<h1>Un titulo</h1>\n</section></li>\n</lu>", lista.imprimir());
 	}
 
 }
