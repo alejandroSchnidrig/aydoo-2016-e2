@@ -57,7 +57,7 @@ public class ListaTest {
 	}
 	
 	@Test
-	public void ListaConQueContieneUnaSeccionSeImprimeCorrectamente(){
+	public void ListaQueContieneUnaSeccionSeImprimeCorrectamente(){
 		Lista lista = new Lista("");
 		Seccion seccion = new Seccion("");
 		Elemento unTitulo = new Titulo("#Un titulo");
@@ -66,6 +66,18 @@ public class ListaTest {
 		lista.agregarElemento(seccion);
 		
 		Assert.assertEquals("<lu>\n<li><section>\n<h1>Un titulo</h1>\n</section></li>\n</lu>", lista.imprimir());
+	}
+	
+	@Test
+	public void ListaQueContieneUnaListaConElementosSeImprimeCorrectamente(){
+		Lista lista = new Lista("");
+		Lista otraLista = new Lista("");
+		Elemento unTitulo = new Titulo("#Un titulo");
+		
+		otraLista.agregarElemento(unTitulo);
+		lista.agregarElemento(otraLista);
+		
+		Assert.assertEquals("<lu>\n<li><lu>\n<li><h1>Un titulo</h1></li>\n</lu></li>\n</lu>", lista.imprimir());
 	}
 
 }
