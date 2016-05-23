@@ -33,7 +33,7 @@ public class ListaTest {
 	}
 
 	@Test
-	public void ListaImprimeOtraLista(){
+	public void ListaImprimeOtraListaVaciaCorrectamente(){
 		Lista primerLista = new Lista("");
 		Lista segundaLista = new Lista("Segunda Lista");
 
@@ -47,6 +47,13 @@ public class ListaTest {
 		Lista primerLista = new Lista("");
 
 		Assert.assertEquals("<lu>\n</lu>", primerLista.imprimir());
+	}
+	
+	@Test
+	public void NonmbreDeLaListaSeImprimeCorrectamente(){
+		Lista Lista = new Lista("soy una lista");
+		
+		Assert.assertEquals("soy una lista", Lista.getContenido());
 	}
 
 }
