@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class ListaTest {
-	
+
 	@Test
 	public void ListaImprimeUntituloCorrectamente() {
 
@@ -15,7 +15,7 @@ public class ListaTest {
 
 		Assert.assertEquals("<lu>\n<li><h1>Un titulo</h1></li>\n</lu>", unaLista.imprimir());
 	}
-	
+
 	@Test
 	public void ListaImprime3ElementosCorrectamente() {
 
@@ -29,7 +29,24 @@ public class ListaTest {
 		unaLista.agregarElemento(Texto);
 
 		Assert.assertEquals("<lu>\n<li><h1>Un titulo</h1></li>\n<li><h2>Un sub-titulo</h2></li>\n"
-										+ "<li>soy un texto plano</li>\n</lu>", unaLista.imprimir());
+				+ "<li>soy un texto plano</li>\n</lu>", unaLista.imprimir());
+	}
+
+	@Test
+	public void ListaImprimeOtraLista(){
+		Lista primerLista = new Lista("");
+		Lista segundaLista = new Lista("Segunda Lista");
+
+		primerLista.agregarElemento (segundaLista);
+
+		Assert.assertEquals("<lu>\n<li><lu>\n</lu></li>\n</lu>", primerLista.imprimir());
+	}
+	
+	@Test
+	public void ListaSinElementosSeImprimeCorrectamente(){
+		Lista primerLista = new Lista("");
+
+		Assert.assertEquals("<lu>\n</lu>", primerLista.imprimir());
 	}
 
 }
