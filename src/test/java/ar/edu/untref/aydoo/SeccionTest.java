@@ -49,5 +49,12 @@ public class SeccionTest {
 				+ "<h1>FIN</h1>\n</section>", otraSeccion.imprimir());
 
 	}
+	
+	@Test
+	public void SeccionSinElementosSeImprimeCorrectamente() {
 
+		Seccion otraSeccion = new Seccion("");
+		Assert.assertEquals("<section>\n</section>", otraSeccion.imprimir());
+
+	}
 }
