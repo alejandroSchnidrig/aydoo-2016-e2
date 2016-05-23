@@ -20,7 +20,7 @@ public class Seccion extends Elemento {
 		Iterator<Elemento> iteradorSeccion = this.elementos.iterator();
 		while (iteradorSeccion.hasNext()) {
 			Elemento actual = iteradorSeccion.next();
-			resultado += resultado + actual.imprimir() + "\n";
+			resultado += actual.imprimir() + "\n";
 		}
 
 		return "<section>" + "\n" + resultado + "</section>";
@@ -28,10 +28,6 @@ public class Seccion extends Elemento {
 
 	public void agregarElemento(Elemento Elemento) {
 		this.elementos.add(Elemento);
-	}
-
-	public String getContenidoElemento(int posicion) {
-		return elementos.get(posicion).getContenido();
 	}
 
 }
