@@ -1,0 +1,37 @@
+package ar.edu.untref.aydoo;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Seccion extends Elemento {
+
+	private List<Elemento> elementos;
+
+	public Seccion(String contenido) {
+		super(contenido);
+		this.elementos = new LinkedList<Elemento>();
+	}
+
+	@Override
+	public String imprimir() {
+
+		String resultado = "";
+		Iterator<Elemento> iteradorSeccion = this.elementos.iterator();
+		while (iteradorSeccion.hasNext()) {
+			Elemento actual = iteradorSeccion.next();
+			resultado += resultado + actual.imprimir() + "\n";
+		}
+
+		return "<section>" + "\n" + resultado + "</section>";
+	}
+
+	public void agregarElemento(Elemento Elemento) {
+		this.elementos.add(Elemento);
+	}
+
+	public String getContenidoElemento(int posicion) {
+		return elementos.get(posicion).getContenido();
+	}
+
+}
