@@ -49,12 +49,32 @@ public class SeccionTest {
 				+ "<h1>FIN</h1>\n</section>", otraSeccion.imprimir());
 
 	}
-	
+
 	@Test
 	public void SeccionSinElementosSeImprimeCorrectamente() {
 
 		Seccion otraSeccion = new Seccion("");
 		Assert.assertEquals("<section>\n</section>", otraSeccion.imprimir());
 
+	}
+
+	@Test
+	public void NombreDelaSeccionSeimprimeCorrectamente() {
+		Seccion seccion = new Seccion("");
+
+		Assert.assertEquals("", seccion.getContenido());
+
+	}
+	
+	@Test
+	public void SeccionQueContieneOtraSeccionSeImprimeCorrectamente(){
+		Seccion seccion = new Seccion("");
+		Seccion otraSeccion = new Seccion("");
+		Elemento unTitulo = new Titulo("#El Hobbit");
+		
+		otraSeccion.agregarElemento(unTitulo);
+		seccion.agregarElemento(otraSeccion);
+		
+		Assert.assertEquals("<section>\n<section>\n<h1>El Hobbit</h1>\n</section>\n</section>", seccion.imprimir());
 	}
 }
