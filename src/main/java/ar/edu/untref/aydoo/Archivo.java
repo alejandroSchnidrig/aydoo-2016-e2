@@ -23,13 +23,14 @@ public class Archivo extends Elemento {
 
 	@Override
 	public String imprimir() {
-
+		
+		String resultado = "";
 		Iterator<Elemento> listaDeElementos = elementos.iterator();
 		while (listaDeElementos.hasNext()) {
 			Elemento actual = listaDeElementos.next();
-			System.out.println(actual.imprimir());
+			resultado = actual.imprimir();
 		}
-		return null;
+		return resultado;
 	}
 
 }

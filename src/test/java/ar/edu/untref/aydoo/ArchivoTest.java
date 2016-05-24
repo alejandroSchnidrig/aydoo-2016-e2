@@ -13,9 +13,7 @@ public class ArchivoTest {
 		
 		unArchivo.agregarElemento(unTitulo);
 		
-		unArchivo.imprimir();
-		
-		Assert.assertEquals("<h1>Titulo numero uno</h1>", unArchivo.getContenidoElemento(0));
+		Assert.assertEquals("<h1>Titulo numero uno</h1>", unArchivo.imprimir());
 	}
 	
 	@Test
@@ -26,9 +24,7 @@ public class ArchivoTest {
 		
 		unArchivo.agregarElemento(unSubTitulo);
 		
-		unArchivo.imprimir();
-		
-		Assert.assertEquals("<h2>SubTitulo numero uno</h2>", unArchivo.getContenidoElemento(0));
+		Assert.assertEquals("<h2>SubTitulo numero uno</h2>",  unArchivo.imprimir());
 	}
 	
 	@Test
@@ -39,9 +35,20 @@ public class ArchivoTest {
 		
 		unArchivo.agregarElemento(unaImagen);
 		
+		Assert.assertEquals("<img src=\"imagen.png\"/>", unArchivo.imprimir());
+	}
+	
+	@Test
+	public void ArchivoImprimeUnaSeccionVaciaCorrectamente(){
+		
+		Archivo unArchivo = new Archivo("archivo.txt");
+		Elemento seccion = new Seccion("");
+		
+		unArchivo.agregarElemento(seccion);
+		
 		unArchivo.imprimir();
 		
-		Assert.assertEquals("<img src=\"imagen.png\"/>", unArchivo.getContenidoElemento(0));
+		Assert.assertEquals("<section>\n</section>", unArchivo.imprimir());
 	}
 
 	@Test
