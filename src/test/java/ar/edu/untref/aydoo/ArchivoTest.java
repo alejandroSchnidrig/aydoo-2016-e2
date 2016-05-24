@@ -39,14 +39,23 @@ public class ArchivoTest {
 	}
 	
 	@Test
+	public void ArchivoImprimeTextoPlanoCorrectamente(){
+		
+		Archivo unArchivo = new Archivo("archivo.txt");
+		Elemento texto = new TextoPlano("hola mundo");
+		
+		unArchivo.agregarElemento(texto);
+		
+		Assert.assertEquals("hola mundo", unArchivo.imprimir());
+	}
+	
+	@Test
 	public void ArchivoImprimeUnaSeccionVaciaCorrectamente(){
 		
 		Archivo unArchivo = new Archivo("archivo.txt");
 		Elemento seccion = new Seccion("");
 		
 		unArchivo.agregarElemento(seccion);
-		
-		unArchivo.imprimir();
 		
 		Assert.assertEquals("<section>\n</section>", unArchivo.imprimir());
 	}
