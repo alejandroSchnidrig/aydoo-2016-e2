@@ -30,6 +30,19 @@ public class ArchivoTest {
 		
 		Assert.assertEquals("<h2>SubTitulo numero uno</h2>", unArchivo.getContenidoElemento(0));
 	}
+	
+	@Test
+	public void ArchivoImprimeUnaImagenCorrectamente(){
+		
+		Archivo unArchivo = new Archivo("archivo.txt");
+		Elemento unaImagen = new Imagen("i:imagen.png");
+		
+		unArchivo.agregarElemento(unaImagen);
+		
+		unArchivo.imprimir();
+		
+		Assert.assertEquals("<img src=\"imagen.png\"/>", unArchivo.getContenidoElemento(0));
+	}
 
 	@Test
 	public void ArchivoImprimeSusElementosCorrectamente() {
