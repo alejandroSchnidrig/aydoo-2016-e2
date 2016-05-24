@@ -9,7 +9,7 @@ public class ListaTest {
 	public void ListaImprimeUntituloCorrectamente() {
 
 		Lista unaLista = new Lista("");
-		Elemento unTitulo = new Titulo("#Un titulo");
+		Elemento unTitulo = new Titulo("# Un titulo");
 
 		unaLista.agregarElemento(unTitulo);
 
@@ -20,8 +20,8 @@ public class ListaTest {
 	public void ListaImprime3ElementosCorrectamente() {
 
 		Lista unaLista = new Lista("");
-		Elemento unTitulo = new Titulo("#Un titulo");
-		Elemento unSubTitulo = new SubTitulo("##Un sub-titulo");
+		Elemento unTitulo = new Titulo("# Un titulo");
+		Elemento unSubTitulo = new SubTitulo("## Un sub-titulo");
 		Elemento Texto = new TextoPlano("soy un texto plano");
 
 		unaLista.agregarElemento(unTitulo);
@@ -60,7 +60,7 @@ public class ListaTest {
 	public void ListaQueContieneUnaSeccionSeImprimeCorrectamente(){
 		Lista lista = new Lista("");
 		Seccion seccion = new Seccion("");
-		Elemento unTitulo = new Titulo("#Un titulo");
+		Elemento unTitulo = new Titulo("# Un titulo");
 		
 		seccion.agregarElemento(unTitulo);
 		lista.agregarElemento(seccion);
@@ -72,7 +72,7 @@ public class ListaTest {
 	public void ListaQueContieneUnaListaConElementosSeImprimeCorrectamente(){
 		Lista lista = new Lista("");
 		Lista otraLista = new Lista("");
-		Elemento unTitulo = new Titulo("#Un titulo");
+		Elemento unTitulo = new Titulo("# Un titulo");
 		
 		otraLista.agregarElemento(unTitulo);
 		lista.agregarElemento(otraLista);

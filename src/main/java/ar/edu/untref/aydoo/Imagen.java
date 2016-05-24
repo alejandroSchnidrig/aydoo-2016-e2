@@ -14,7 +14,6 @@ public class Imagen extends Elemento {
 		String nuevoContenido = partes[1];
 		resultado = "<img src=\"" + nuevoContenido + "\"/>";
 
-		System.out.println(resultado);
 		this.setContenido(resultado);
 
 		return resultado;

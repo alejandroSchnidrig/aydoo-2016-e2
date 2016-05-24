@@ -27,7 +27,7 @@ public class Archivo extends Elemento {
 		Iterator<Elemento> listaDeElementos = elementos.iterator();
 		while (listaDeElementos.hasNext()) {
 			Elemento actual = listaDeElementos.next();
-			actual.imprimir();
+			System.out.println(actual.imprimir());
 		}
 		return null;
 	}

@@ -4,15 +4,28 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class ArchivoTest {
+	
+	@Test
+	public void ArchivoImprimeUnTituloCorrectamente(){
+		
+		Archivo unArchivo = new Archivo("archivo.txt");
+		Elemento unTitulo = new Titulo("# Titulo numero uno");
+		
+		unArchivo.agregarElemento(unTitulo);
+		
+		unArchivo.imprimir();
+		
+		Assert.assertEquals("<h1>Titulo numero uno</h1>", unArchivo.getContenidoElemento(0));
+	}
 
 	@Test
-	public void ImprimeSusElementosCorrectamente() {
+	public void ArchivoImprimeSusElementosCorrectamente() {
 
 		Archivo unArchivo = new Archivo("archivo.txt");
-		Elemento unTitulo = new Titulo("#Titulo numero uno");
-		Elemento unTitulo2 = new Titulo("#Titulo numero dos");
-		Elemento unSubTitulo = new SubTitulo("##SubTitulo numero uno");
-		Elemento unSubTitulo2 = new SubTitulo("##SubTitulo numero dos");
+		Elemento unTitulo = new Titulo("# Titulo numero uno");
+		Elemento unTitulo2 = new Titulo("# Titulo numero dos");
+		Elemento unSubTitulo = new SubTitulo("## SubTitulo numero uno");
+		Elemento unSubTitulo2 = new SubTitulo("## SubTitulo numero dos");
 		Elemento unaImagen = new Imagen("i:unaImagen.png");
 
 		unArchivo.agregarElemento(unTitulo);

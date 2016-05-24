@@ -17,4 +17,8 @@ public abstract class Elemento {
 	}
 
 	public abstract String imprimir();
+	
+	public void agregarElemento(Elemento elemento){
+		System.out.println("No se agregar un elemento");
+	}
 }
