@@ -17,6 +17,19 @@ public class ArchivoTest {
 		
 		Assert.assertEquals("<h1>Titulo numero uno</h1>", unArchivo.getContenidoElemento(0));
 	}
+	
+	@Test
+	public void ArchivoImprimeUnSubTituloCorrectamente(){
+		
+		Archivo unArchivo = new Archivo("archivo.txt");
+		Elemento unSubTitulo = new SubTitulo("## SubTitulo numero uno");
+		
+		unArchivo.agregarElemento(unSubTitulo);
+		
+		unArchivo.imprimir();
+		
+		Assert.assertEquals("<h2>SubTitulo numero uno</h2>", unArchivo.getContenidoElemento(0));
+	}
 
 	@Test
 	public void ArchivoImprimeSusElementosCorrectamente() {
