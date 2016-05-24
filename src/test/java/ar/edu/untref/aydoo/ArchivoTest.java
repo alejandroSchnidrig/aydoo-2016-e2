@@ -59,6 +59,21 @@ public class ArchivoTest {
 		
 		Assert.assertEquals("<section>\n</section>", unArchivo.imprimir());
 	}
+	
+	@Test
+	public void ArchivoImprimeUnaSeccionConElementosCorrectamente(){
+		
+		Archivo unArchivo = new Archivo("archivo.txt");
+		Elemento seccion = new Seccion("");
+		Elemento unTitulo = new Titulo("# Titulo numero uno");
+		Elemento unSubTitulo = new SubTitulo("## SubTitulo numero uno");
+		
+		seccion.agregarElemento(unTitulo);
+		seccion.agregarElemento(unSubTitulo);
+		unArchivo.agregarElemento(seccion);
+		
+		Assert.assertEquals("<section>\n<h1>Titulo numero uno</h1>\n<h2>SubTitulo numero uno</h2>\n</section>", unArchivo.imprimir());
+	}
 
 	@Test
 	public void ArchivoImprimeSusElementosCorrectamente() {
