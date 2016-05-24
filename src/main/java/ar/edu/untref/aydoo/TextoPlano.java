@@ -9,9 +9,10 @@ public class TextoPlano  extends Elemento {
 	@Override
 	public String imprimir() {
 
-		System.out.println(contenido);
+		String resultado = "";
+		resultado = this.contenido + "\n";
 
-		return contenido;
+		return resultado;
 	}
 
 }

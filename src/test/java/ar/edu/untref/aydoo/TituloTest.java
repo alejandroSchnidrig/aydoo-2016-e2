@@ -19,7 +19,7 @@ public class TituloTest {
 
 		Elemento unTitulo = new Titulo("# El estudio de la anti-materia");
 
-		Assert.assertEquals("<h1>El estudio de la anti-materia</h1>", unTitulo.imprimir());
+		Assert.assertEquals("<h1>El estudio de la anti-materia</h1>\n", unTitulo.imprimir());
 	}
 
 }

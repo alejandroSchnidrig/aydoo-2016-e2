@@ -19,7 +19,7 @@ public class SubTituloTest {
 
 		Elemento unSubTitulo = new SubTitulo("## El estudio de la anti-materia");
 
-		Assert.assertEquals("<h2>El estudio de la anti-materia</h2>", unSubTitulo.imprimir());
+		Assert.assertEquals("<h2>El estudio de la anti-materia</h2>\n", unSubTitulo.imprimir());
 	}
 
 }

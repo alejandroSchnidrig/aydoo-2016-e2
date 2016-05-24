@@ -13,7 +13,7 @@ public class ArchivoTest {
 		
 		unArchivo.agregarElemento(unTitulo);
 		
-		Assert.assertEquals("<h1>Titulo numero uno</h1>", unArchivo.imprimir());
+		Assert.assertEquals("<h1>Titulo numero uno</h1>\n", unArchivo.imprimir());
 	}
 	
 	@Test
@@ -24,7 +24,7 @@ public class ArchivoTest {
 		
 		unArchivo.agregarElemento(unSubTitulo);
 		
-		Assert.assertEquals("<h2>SubTitulo numero uno</h2>",  unArchivo.imprimir());
+		Assert.assertEquals("<h2>SubTitulo numero uno</h2>\n",  unArchivo.imprimir());
 	}
 	
 	@Test
@@ -35,7 +35,7 @@ public class ArchivoTest {
 		
 		unArchivo.agregarElemento(unaImagen);
 		
-		Assert.assertEquals("<img src=\"imagen.png\"/>", unArchivo.imprimir());
+		Assert.assertEquals("<img src=\"imagen.png\"/>\n", unArchivo.imprimir());
 	}
 	
 	@Test
@@ -46,7 +46,7 @@ public class ArchivoTest {
 		
 		unArchivo.agregarElemento(texto);
 		
-		Assert.assertEquals("hola mundo", unArchivo.imprimir());
+		Assert.assertEquals("hola mundo\n", unArchivo.imprimir());
 	}
 	
 	@Test
@@ -57,7 +57,7 @@ public class ArchivoTest {
 		
 		unArchivo.agregarElemento(seccion);
 		
-		Assert.assertEquals("<section>\n</section>", unArchivo.imprimir());
+		Assert.assertEquals("<section>\n</section>\n", unArchivo.imprimir());
 	}
 	
 	@Test
@@ -72,11 +72,11 @@ public class ArchivoTest {
 		seccion.agregarElemento(unSubTitulo);
 		unArchivo.agregarElemento(seccion);
 		
-		Assert.assertEquals("<section>\n<h1>Titulo numero uno</h1>\n<h2>SubTitulo numero uno</h2>\n</section>", unArchivo.imprimir());
+		Assert.assertEquals("<section>\n<h1>Titulo numero uno</h1>\n<h2>SubTitulo numero uno</h2>\n</section>\n", unArchivo.imprimir());
 	}
 
 	@Test
-	public void ArchivoImprimeSusElementosCorrectamente() {
+	public void ArchivoImprimeTodosSusElementosCorrectamente() {
 
 		Archivo unArchivo = new Archivo("archivo.txt");
 		Elemento unTitulo = new Titulo("# Titulo numero uno");
@@ -84,20 +84,19 @@ public class ArchivoTest {
 		Elemento unSubTitulo = new SubTitulo("## SubTitulo numero uno");
 		Elemento unSubTitulo2 = new SubTitulo("## SubTitulo numero dos");
 		Elemento unaImagen = new Imagen("i:unaImagen.png");
+		Elemento seccion = new Seccion("---");
 
 		unArchivo.agregarElemento(unTitulo);
 		unArchivo.agregarElemento(unSubTitulo);
-		unArchivo.agregarElemento(unSubTitulo2);
-		unArchivo.agregarElemento(unTitulo2);
+		seccion.agregarElemento(unSubTitulo2);
+		seccion.agregarElemento(unTitulo2);
+		unArchivo.agregarElemento(seccion);
 		unArchivo.agregarElemento(unaImagen);
 
-		unArchivo.imprimir();
-
-		Assert.assertEquals("<h1>Titulo numero uno</h1>", unArchivo.getContenidoElemento(0));
-		Assert.assertEquals("<h2>SubTitulo numero uno</h2>", unArchivo.getContenidoElemento(1));
-		Assert.assertEquals("<h2>SubTitulo numero dos</h2>", unArchivo.getContenidoElemento(2));
-		Assert.assertEquals("<h1>Titulo numero dos</h1>", unArchivo.getContenidoElemento(3));
-		Assert.assertEquals("<img src=\"unaImagen.png\"/>", unArchivo.getContenidoElemento(4));
+		Assert.assertEquals("<h1>Titulo numero uno</h1>\n<h2>SubTitulo numero uno</h2>\n<section>\n"
+				+ "<h2>SubTitulo numero dos</h2>\n<h1>Titulo numero dos</h1>\n</section>\n<img src=\"unaImagen.png\"/>\n"
+					, unArchivo.imprimir());
+		
 
 	}
 

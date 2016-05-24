@@ -19,7 +19,7 @@ public class TextoPlanoTest {
 
 		Elemento textoPlano = new TextoPlano("El texto es plano");
 
-		Assert.assertEquals("El texto es plano", textoPlano.imprimir());
+		Assert.assertEquals("El texto es plano\n", textoPlano.imprimir());
 	}
 
 }

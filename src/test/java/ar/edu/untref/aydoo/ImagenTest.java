@@ -19,7 +19,7 @@ public class ImagenTest {
 
 		Elemento unaImagen = new Imagen("i:imagen.png");
 
-		Assert.assertEquals("<img src=\"imagen.png\"/>", unaImagen.imprimir());
+		Assert.assertEquals("<img src=\"imagen.png\"/>\n", unaImagen.imprimir());
 	}
 
 }

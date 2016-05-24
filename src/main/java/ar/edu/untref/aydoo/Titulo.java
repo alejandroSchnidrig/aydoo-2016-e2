@@ -12,7 +12,8 @@ public class Titulo extends Elemento {
 		String resultado = "";
 		String[] partes = contenido.split("# ");
 		String nuevoContenido = partes[1];
-		resultado = "<h1>" + nuevoContenido + "</h1>";
+		resultado = "<h1>" + nuevoContenido + "</h1>" + "\n";
+				
 
 		this.setContenido(resultado);
 

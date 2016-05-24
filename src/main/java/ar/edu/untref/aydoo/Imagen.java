@@ -12,7 +12,7 @@ public class Imagen extends Elemento {
 		String resultado = "";
 		String[] partes = contenido.split("i:");
 		String nuevoContenido = partes[1];
-		resultado = "<img src=\"" + nuevoContenido + "\"/>";
+		resultado = "<img src=\"" + nuevoContenido + "\"/>" + "\n";
 
 		this.setContenido(resultado);
 

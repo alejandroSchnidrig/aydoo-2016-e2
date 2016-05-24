@@ -12,7 +12,7 @@ public class SubTitulo extends Elemento {
 		String resultado = "";
 		String[] partes = contenido.split("## ");
 		String nuevoContenido = partes[1];
-		resultado = "<h2>" + nuevoContenido + "</h2>";
+		resultado = "<h2>" + nuevoContenido + "</h2>" + "\n";
 
 		this.setContenido(resultado);
 

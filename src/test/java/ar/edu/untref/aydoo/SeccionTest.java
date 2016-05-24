@@ -13,7 +13,7 @@ public class SeccionTest {
 
 		unaSeccion.agregarElemento(unTitulo);
 
-		Assert.assertEquals("<section>\n<h1>El señor de los anillos</h1>\n</section>", unaSeccion.imprimir());
+		Assert.assertEquals("<section>\n<h1>El señor de los anillos</h1>\n</section>\n", unaSeccion.imprimir());
 	}
 
 	@Test
@@ -26,7 +26,7 @@ public class SeccionTest {
 		otraSeccion.agregarElemento(unTitulo);
 		otraSeccion.agregarElemento(SubTitulo);
 
-		Assert.assertEquals("<section>\n<h1>El Hobbit</h1>\n<h2>4000 años antes... </h2>\n</section>",
+		Assert.assertEquals("<section>\n<h1>El Hobbit</h1>\n<h2>4000 años antes... </h2>\n</section>\n",
 				otraSeccion.imprimir());
 
 	}
@@ -46,7 +46,7 @@ public class SeccionTest {
 		otraSeccion.agregarElemento(otroTitulo);
 
 		Assert.assertEquals("<section>\n<h1>El Hobbit</h1>\n<h2>4000 años antes... </h2>\n<img src=\"foto.png\"/>\n"
-				+ "<h1>FIN</h1>\n</section>", otraSeccion.imprimir());
+				+ "<h1>FIN</h1>\n</section>\n", otraSeccion.imprimir());
 
 	}
 
@@ -54,7 +54,7 @@ public class SeccionTest {
 	public void SeccionSinElementosSeImprimeCorrectamente() {
 
 		Seccion otraSeccion = new Seccion("");
-		Assert.assertEquals("<section>\n</section>", otraSeccion.imprimir());
+		Assert.assertEquals("<section>\n</section>\n", otraSeccion.imprimir());
 
 	}
 
@@ -75,6 +75,6 @@ public class SeccionTest {
 		otraSeccion.agregarElemento(unTitulo);
 		seccion.agregarElemento(otraSeccion);
 		
-		Assert.assertEquals("<section>\n<section>\n<h1>El Hobbit</h1>\n</section>\n</section>", seccion.imprimir());
+		Assert.assertEquals("<section>\n<section>\n<h1>El Hobbit</h1>\n</section>\n</section>\n", seccion.imprimir());
 	}
 }
