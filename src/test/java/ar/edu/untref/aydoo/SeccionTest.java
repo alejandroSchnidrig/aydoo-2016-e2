@@ -15,6 +15,39 @@ public class SeccionTest {
 
 		Assert.assertEquals("<section>\n<h1>El señor de los anillos</h1>\n</section>\n", unaSeccion.imprimir());
 	}
+	
+	@Test
+	public void SeccionImprimeUnSubTituloCorrectamente() {
+
+		Seccion unaSeccion = new Seccion("");
+		Elemento unSubTitulo = new SubTitulo("## El señor de los anillos");
+
+		unaSeccion.agregarElemento(unSubTitulo);
+
+		Assert.assertEquals("<section>\n<h2>El señor de los anillos</h2>\n</section>\n", unaSeccion.imprimir());
+	}
+	
+	@Test
+	public void SeccionImprimeUnaImagenCorrectamente() {
+
+		Seccion unaSeccion = new Seccion("");
+		Elemento unaImagen = new Imagen("i:imagen.png");
+
+		unaSeccion.agregarElemento(unaImagen);
+
+		Assert.assertEquals("<section>\n<img src=\"imagen.png\"/>\n</section>\n", unaSeccion.imprimir());
+	}
+	
+	@Test
+	public void SeccionImprimeUnTextoPlanoCorrectamente() {
+
+		Seccion unaSeccion = new Seccion("");
+		Elemento texto = new TextoPlano("El señor de los anillos");
+
+		unaSeccion.agregarElemento(texto);
+
+		Assert.assertEquals("<section>\nEl señor de los anillos\n</section>\n", unaSeccion.imprimir());
+	}
 
 	@Test
 	public void SeccionImprimeDosElementosCorrectamente() {
