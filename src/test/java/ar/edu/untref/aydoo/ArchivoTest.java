@@ -74,6 +74,17 @@ public class ArchivoTest {
 		
 		Assert.assertEquals("<section>\n<h1>Titulo numero uno</h1>\n<h2>SubTitulo numero uno</h2>\n</section>\n", unArchivo.imprimir());
 	}
+	
+	@Test
+	public void ArchivoImprimeUnaListaVaciaCorrectamente(){
+		
+		Archivo unArchivo = new Archivo("archivo.txt");
+		Elemento lista = new Lista("");
+		
+		unArchivo.agregarElemento(lista);
+		
+		Assert.assertEquals("<lu>\n<li></li>\n</lu>", unArchivo.imprimir());
+	}
 
 	@Test
 	public void ArchivoImprimeTodosSusElementosCorrectamente() {
