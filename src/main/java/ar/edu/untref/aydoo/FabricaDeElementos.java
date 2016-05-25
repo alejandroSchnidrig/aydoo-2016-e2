@@ -7,6 +7,7 @@ import java.util.List;
 public class FabricaDeElementos {
 
 	private List<Elemento> elementos;
+	private ContructorDeElementos constructor;
 
 	public FabricaDeElementos() {
 		this.elementos = new LinkedList<Elemento>();
@@ -19,20 +20,29 @@ public class FabricaDeElementos {
 			String contenido = iteradorContenidos.next();
 
 			if (contenido.contains("## ")) {
-				SubTitulo subTitulo = new SubTitulo(contenido);
-				this.elementos.add(subTitulo);
+				constructor = new ConstructorDeSubTitulo();
+				Elemento unElemento = constructor.construirElemento(contenido);
+				this.elementos.add(unElemento);
 			} else if (contenido.contains("# ")) {
-				Titulo unTitulo = new Titulo(contenido);
-				this.elementos.add(unTitulo);
+				constructor = new ConstructorDeTitulo(); 
+				Elemento unElemento = constructor.construirElemento(contenido);
+				this.elementos.add(unElemento);
 			} else if (contenido.contains("i:")) {
-				Imagen unaImagen = new Imagen(contenido);
-				this.elementos.add(unaImagen);
+				constructor = new ConstructorDeImagen(); 
+				Elemento unElemento = constructor.construirElemento(contenido);
+				this.elementos.add(unElemento);
 			} else if (contenido.contains("---")) {
-				Seccion unaSeccion = new Seccion(contenido);
-				this.elementos.add(unaSeccion);
+				constructor = new ConstructorDeSeccion(); 
+				Elemento unElemento = constructor.construirElemento(contenido);
+				this.elementos.add(unElemento);
+			} else if(contenido.contains("*")){
+				constructor = new ConstructorDeLista(); 
+				Elemento unElemento = constructor.construirElemento(contenido);
+				this.elementos.add(unElemento);
 			} else {
-				TextoPlano texto = new TextoPlano(contenido);
-				this.elementos.add(texto);
+				constructor = new ConstructorDeTextoPlano(); 
+				Elemento unElemento = constructor.construirElemento(contenido);
+				this.elementos.add(unElemento);
 			}
 		}
 
