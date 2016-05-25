@@ -31,9 +31,9 @@ public class ListaTest {
 	@Test
 	public void ListaVaciaSeImprimeCorrectamente(){
 		
-		Lista lista = new Lista("* ");
+		Lista lista = new Lista("");
 		
-		Assert.assertEquals("<lu>\n<li> </li>\n</lu>", lista.imprimir());
+		Assert.assertEquals("<lu>\n<li></li>\n</lu>", lista.imprimir());
 	}
 	
 	

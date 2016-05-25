@@ -36,9 +36,16 @@ public class Lista extends Elemento {
 	}
 	
 	private String Dividir(String contenido){
-		String[] partes = contenido.split("\\*");
-		String nuevoContenido = partes[1];
-		return nuevoContenido;
+		
+		String resultado = contenido;
+		
+		if(resultado.contains("*")){
+			String[] partes = contenido.split("\\*");
+			String nuevoContenido = partes[1];
+			resultado = nuevoContenido;
+		}	
+		
+		return resultado;
 	}
 
 }
