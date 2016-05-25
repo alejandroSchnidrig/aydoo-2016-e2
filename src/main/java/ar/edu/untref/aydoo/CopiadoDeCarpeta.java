@@ -43,9 +43,9 @@ public class CopiadoDeCarpeta {
 				archivoSalida.close();
 			}
 		}else{
-			
-			throw new Error("No existe la ruta especificada");
-			
+
+			throw new NoExisteDirectorioException("No existe la ruta especificada");
+
 		}
 	}
 

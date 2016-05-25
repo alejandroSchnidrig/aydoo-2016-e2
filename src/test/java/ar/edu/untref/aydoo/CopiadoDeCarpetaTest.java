@@ -9,10 +9,10 @@ import org.junit.Test;
 
 
 public class CopiadoDeCarpetaTest {
-	
+
 	@Test
 	public void seCopiaCarpetaDelDirectorioCorrectamente() throws IOException, NoExisteDirectorioException{
-		
+
 		String rutaOrigen = System.getProperty("user.dir");
 		String rutaDestino = (rutaOrigen+"/carpetaPruebaCopia");
 
@@ -20,7 +20,22 @@ public class CopiadoDeCarpetaTest {
 		File carpetaDestino = new File(rutaDestino);
 		CopiadoDeCarpeta realizarCopia = new CopiadoDeCarpeta();
 		realizarCopia.copiarArchivos(carpetaOrigen, carpetaDestino);
-		
+
+		Assert.assertTrue(carpetaDestino.exists());
+
+	}
+
+	@Test (expected = NoExisteDirectorioException.class)
+	public void carpetaInexistenteParaCopiar() throws IOException, NoExisteDirectorioException{
+
+		String rutaOrigen = "DirectorioIncorrecto";
+		String rutaDestino = (rutaOrigen+"/pruebaCarpetaCopia");
+
+		File carpetaOrigen = new File(rutaOrigen);
+		File carpetaDestino = new File(rutaDestino);
+		CopiadoDeCarpeta realizarCopia = new CopiadoDeCarpeta();
+		realizarCopia.copiarArchivos(carpetaOrigen, carpetaDestino);
+
 		Assert.assertTrue(carpetaDestino.exists());
 
 	}
