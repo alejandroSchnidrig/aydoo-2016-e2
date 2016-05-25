@@ -16,17 +16,20 @@ public class FabricaDeElementos {
 		
 		Iterator<String> iteradorContenidos = contenidos.iterator();
 		while(iteradorContenidos.hasNext()){
-			String actual = iteradorContenidos.next();
+			String contenido = iteradorContenidos.next();
 			
-			if(actual.contains("## ")){
-				SubTitulo subTitulo = new SubTitulo(actual);
+			if(contenido.contains("## ")){
+				SubTitulo subTitulo = new SubTitulo(contenido);
 				this.elementos.add(subTitulo);
-			}else if(actual.contains("# ")){
-				Titulo unTitulo = new Titulo(actual);
+			}else if(contenido.contains("# ")){
+				Titulo unTitulo = new Titulo(contenido);
 				this.elementos.add(unTitulo);
-			}else if(actual.contains("i:")){
-				Imagen unaImagen = new Imagen(actual);
+			}else if(contenido.contains("i:")){
+				Imagen unaImagen = new Imagen(contenido);
 				this.elementos.add(unaImagen);
+			}else if(contenido.contains("---")){
+				Seccion unaSeccion = new Seccion(contenido);
+				this.elementos.add(unaSeccion);
 			}
 		}	
 		

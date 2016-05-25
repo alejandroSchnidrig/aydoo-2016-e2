@@ -58,5 +58,22 @@ public class FabricaDeElementosTest {
 		Assert.assertEquals("i:imagen.png", fabrica.getElemento(0).getContenido());
 	
 	}
+	
+	@Test
+	public void FabricaConstruyeUnaSeccionCorrectamente(){
+		
+		FabricaDeElementos fabrica = new FabricaDeElementos();
+		
+		List<String> contenidos = new LinkedList<String>();
+		
+		String contenido = "---";
+		
+		contenidos.add(contenido);
+		
+		fabrica.construirElementos(contenidos);
+		
+		Assert.assertEquals("---", fabrica.getElemento(0).getContenido());
+	
+	}
 
 }
