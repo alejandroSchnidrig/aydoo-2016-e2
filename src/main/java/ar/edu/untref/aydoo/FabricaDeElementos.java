@@ -24,6 +24,9 @@ public class FabricaDeElementos {
 			}else if(actual.contains("# ")){
 				Titulo unTitulo = new Titulo(actual);
 				this.elementos.add(unTitulo);
+			}else if(actual.contains("i:")){
+				Imagen unaImagen = new Imagen(actual);
+				this.elementos.add(unaImagen);
 			}
 		}	
 		
