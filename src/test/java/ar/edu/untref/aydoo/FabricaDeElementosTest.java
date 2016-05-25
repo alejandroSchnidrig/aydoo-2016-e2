@@ -21,7 +21,7 @@ public class FabricaDeElementosTest {
 		
 		fabrica.construirElementos(contenidos);
 		
-		Assert.assertEquals("## un subtitulo", fabrica.getElemento(0).getContenido());
+		Assert.assertEquals("<h2>un subtitulo</h2>\n", fabrica.getElemento(0).imprimir());
 	
 	}
 	
@@ -38,7 +38,7 @@ public class FabricaDeElementosTest {
 		
 		fabrica.construirElementos(contenidos);
 		
-		Assert.assertEquals("# un titulo", fabrica.getElemento(0).getContenido());
+		Assert.assertEquals("<h1>un titulo</h1>\n", fabrica.getElemento(0).imprimir());
 	
 	}
 	
@@ -55,7 +55,7 @@ public class FabricaDeElementosTest {
 		
 		fabrica.construirElementos(contenidos);
 		
-		Assert.assertEquals("i:imagen.png", fabrica.getElemento(0).getContenido());
+		Assert.assertEquals("<img src=\"imagen.png\"/>\n", fabrica.getElemento(0).imprimir());
 	
 	}
 	
@@ -72,7 +72,24 @@ public class FabricaDeElementosTest {
 		
 		fabrica.construirElementos(contenidos);
 		
-		Assert.assertEquals("---", fabrica.getElemento(0).getContenido());
+		Assert.assertEquals("<section>\n</section>\n", fabrica.getElemento(0).imprimir());
+	
+	}
+	
+	@Test
+	public void FabricaConstruyeUnTextoPlanoCorrectamente(){
+		
+		FabricaDeElementos fabrica = new FabricaDeElementos();
+		
+		List<String> contenidos = new LinkedList<String>();
+		
+		String contenido = "texto solo";
+		
+		contenidos.add(contenido);
+		
+		fabrica.construirElementos(contenidos);
+		
+		Assert.assertEquals("texto solo\n", fabrica.getElemento(0).imprimir());
 	
 	}
 

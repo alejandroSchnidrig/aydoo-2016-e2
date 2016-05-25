@@ -30,7 +30,10 @@ public class FabricaDeElementos {
 			}else if(contenido.contains("---")){
 				Seccion unaSeccion = new Seccion(contenido);
 				this.elementos.add(unaSeccion);
-			}
+			}else{
+				TextoPlano texto = new TextoPlano(contenido);
+				this.elementos.add(texto);
+			}	
 		}	
 		
 	}
