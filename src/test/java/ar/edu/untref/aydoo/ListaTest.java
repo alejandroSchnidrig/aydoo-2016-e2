@@ -14,6 +14,18 @@ public class ListaTest {
 	}
 	
 	@Test
+	public void ListaConDosListasImprimeCorrectamente(){
+		
+		Lista lista = new Lista("*primera");
+		Lista otraLista = new Lista("*segunda");
+		Lista tercerLista = new Lista("*tercera");
+		
+		lista.agregarElemento(otraLista);
+		lista.agregarElemento(tercerLista);
+		
+		Assert.assertEquals("<lu>\n<li>primera</li>\n<li>segunda</li>\n<li>tercera</li>\n</lu>", lista.imprimir());
+	}
+	@Test
 	public void ListaDentroDeOtraListaSeImprimeCorrectamente(){
 		
 		Lista lista = new Lista("*algo");
