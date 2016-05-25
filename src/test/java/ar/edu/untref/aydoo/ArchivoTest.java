@@ -125,5 +125,34 @@ public class ArchivoTest {
 		
 
 	}
+	
+	@Test
+	public void ArchivoImprimeTodosSusElementosSegundaPruebaCorrectamente() {
+
+		Archivo unArchivo = new Archivo("archivo.txt");
+		Elemento unTitulo = new Titulo("# Titulo numero uno");
+		Elemento unTitulo2 = new Titulo("# Titulo numero dos");
+		Elemento unSubTitulo = new SubTitulo("## SubTitulo numero uno");
+		Elemento unSubTitulo2 = new SubTitulo("## SubTitulo numero dos");
+		Elemento unaImagen = new Imagen("i:unaImagen.png");
+		Elemento seccion = new Seccion("---");
+		Elemento lista = new Lista("*primer elemento");
+		Elemento lista2 = new Lista("*segundo elemento");
+
+		unArchivo.agregarElemento(unTitulo);
+		unArchivo.agregarElemento(unSubTitulo);
+		seccion.agregarElemento(unSubTitulo2);
+		seccion.agregarElemento(unTitulo2);
+		unArchivo.agregarElemento(seccion);
+		unArchivo.agregarElemento(unaImagen);
+		lista.agregarElemento(lista2);
+		unArchivo.agregarElemento(lista);
+
+		Assert.assertEquals("<h1>Titulo numero uno</h1>\n<h2>SubTitulo numero uno</h2>\n<section>\n"
+				+ "<h2>SubTitulo numero dos</h2>\n<h1>Titulo numero dos</h1>\n</section>\n<img src=\"unaImagen.png\"/>\n"
+				+ "<lu>\n<li>primer elemento</li>\n<li>segundo elemento</li>\n</lu>"	, unArchivo.imprimir());
+		
+
+	}
 
 }
