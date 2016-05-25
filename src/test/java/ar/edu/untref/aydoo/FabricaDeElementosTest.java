@@ -94,6 +94,23 @@ public class FabricaDeElementosTest {
 	}
 	
 	@Test
+	public void FabricaConstruyeUnaListaPlanoCorrectamente(){
+		
+		FabricaDeElementos fabrica = new FabricaDeElementos();
+		
+		List<String> contenidos = new LinkedList<String>();
+		
+		String contenido = "*elemento de una lista";
+		
+		contenidos.add(contenido);
+		
+		fabrica.construirElementos(contenidos);
+		
+		Assert.assertEquals("<lu>\n<li>elemento de una lista</li>\n</lu>", fabrica.getElemento(0).imprimir());
+	
+	}
+	
+	@Test
 	public void FabricaConstruyeCincoElementosCorrectamente(){
 		
 		FabricaDeElementos fabrica = new FabricaDeElementos();
