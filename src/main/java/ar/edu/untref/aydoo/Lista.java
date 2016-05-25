@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Lista extends Elemento {
-
+	
 	List<String> elementos;
 
 	public Lista(String contenido) {
@@ -13,8 +13,9 @@ public class Lista extends Elemento {
 		this.elementos = new LinkedList<String>();
 	}
 
+	
 	public String imprimir() {
-
+			
 		String resultado = "";
 
 		Iterator<String> iteradorLista = this.elementos.iterator();
@@ -23,15 +24,18 @@ public class Lista extends Elemento {
 			actual = this.Dividir(actual);
 			resultado += "<li>" + actual + "</li>" + "\n";
 		}
-
-		return "<lu>" + "\n" + "<li>" + this.Dividir(this.contenido) + "</li>" + "\n" + resultado + "</lu>";
+		
+		return "<lu>" + "\n" + "<li>" + this.Dividir(this.contenido) + "</li>" + "\n" +  resultado + "</lu>";
 	}
+	
+	
+
 
 	public void agregarElemento(Elemento elemento) {
 		this.elementos.add(elemento.getContenido());
 	}
-
-	private String Dividir(String contenido) {
+	
+	private String Dividir(String contenido){
 		String[] partes = contenido.split("\\*");
 		String nuevoContenido = partes[1];
 		return nuevoContenido;
