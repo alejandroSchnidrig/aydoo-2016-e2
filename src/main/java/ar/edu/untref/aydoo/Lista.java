@@ -5,30 +5,36 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Lista extends Elemento {
-	
-	List<Elemento> elementos;
+
+	List<String> elementos;
 
 	public Lista(String contenido) {
 		super(contenido);
-		this.elementos = new LinkedList<Elemento>();
+		this.elementos = new LinkedList<String>();
 	}
 
-	
 	public String imprimir() {
-		
+
 		String resultado = "";
-		Iterator<Elemento> iteradorLista = this.elementos.iterator();
+
+		Iterator<String> iteradorLista = this.elementos.iterator();
 		while (iteradorLista.hasNext()) {
-			Elemento actual = iteradorLista.next();
-			resultado += "<li>" + actual.imprimir() + "</li>" + "\n";
+			String actual = iteradorLista.next();
+			actual = this.Dividir(actual);
+			resultado += "<li>" + actual + "</li>" + "\n";
 		}
-		
-		return "<lu>" + "\n" + resultado + "</lu>";
+
+		return "<lu>" + "\n" + "<li>" + this.Dividir(this.contenido) + "</li>" + "\n" + resultado + "</lu>";
 	}
 
+	public void agregarElemento(Elemento elemento) {
+		this.elementos.add(elemento.getContenido());
+	}
 
-	public void agregarElemento(Elemento Elemento) {
-		this.elementos.add(Elemento);
+	private String Dividir(String contenido) {
+		String[] partes = contenido.split("\\*");
+		String nuevoContenido = partes[1];
+		return nuevoContenido;
 	}
 
 }
