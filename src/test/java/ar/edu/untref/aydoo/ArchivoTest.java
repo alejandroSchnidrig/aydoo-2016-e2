@@ -85,6 +85,21 @@ public class ArchivoTest {
 		
 		Assert.assertEquals("<lu>\n<li></li>\n</lu>", unArchivo.imprimir());
 	}
+	
+	@Test
+	public void ArchivoImprimeUnaListaConElementosCorrectamente(){
+		
+		Archivo unArchivo = new Archivo("archivo.txt");
+		Elemento lista = new Lista("*mi nombre es");
+		Elemento listaDos = new Lista("*Robbin");
+		Elemento listaTres = new Lista("*Hood");
+		
+		lista.agregarElemento(listaDos);
+		lista.agregarElemento(listaTres);
+		unArchivo.agregarElemento(lista);
+		
+		Assert.assertEquals("<lu>\n<li>mi nombre es</li>\n<li>Robbin</li>\n<li>Hood</li>\n</lu>", unArchivo.imprimir());
+	}
 
 	@Test
 	public void ArchivoImprimeTodosSusElementosCorrectamente() {
