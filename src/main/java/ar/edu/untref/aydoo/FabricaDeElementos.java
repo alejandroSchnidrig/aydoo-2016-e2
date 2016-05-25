@@ -21,6 +21,9 @@ public class FabricaDeElementos {
 			if(actual.contains("## ")){
 				SubTitulo subTitulo = new SubTitulo(actual);
 				this.elementos.add(subTitulo);
+			}else if(actual.contains("# ")){
+				Titulo unTitulo = new Titulo(actual);
+				this.elementos.add(unTitulo);
 			}
 		}	
 		
