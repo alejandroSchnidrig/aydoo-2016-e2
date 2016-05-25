@@ -27,5 +27,13 @@ public class ListaTest {
 		
 		Assert.assertEquals("<lu>\n<li>algo</li>\n<li>mas</li>\n<li>en</li>\n<li>lista</li>\n</lu>", lista.imprimir());
 	}
+	
+	@Test
+	public void ListaVaciaSeImprimeCorrectamente(){
+		
+		Lista lista = new Lista("* ");
+		
+		Assert.assertEquals("<lu>\n<li> </li>\n</lu>", lista.imprimir());
+	}
 }
 	
