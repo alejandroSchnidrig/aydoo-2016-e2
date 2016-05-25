@@ -92,5 +92,34 @@ public class FabricaDeElementosTest {
 		Assert.assertEquals("texto solo\n", fabrica.getElemento(0).imprimir());
 	
 	}
+	
+	@Test
+	public void FabricaConstruyeCincoElementosCorrectamente(){
+		
+		FabricaDeElementos fabrica = new FabricaDeElementos();
+		
+		List<String> contenidos = new LinkedList<String>();
+		
+		String contenido0 = "## un subtitulo";
+		String contenido1 = "# un titulo";
+		String contenido2 = "i:imagen.png";
+		String contenido3 = "---";
+		String contenido4 = "texto solo";
+		
+		contenidos.add(contenido0);
+		contenidos.add(contenido1);
+		contenidos.add(contenido2);
+		contenidos.add(contenido3);
+		contenidos.add(contenido4);
+		
+		fabrica.construirElementos(contenidos);
+		
+		Assert.assertEquals("<h2>un subtitulo</h2>\n", fabrica.getElemento(0).imprimir());
+		Assert.assertEquals("<h1>un titulo</h1>\n", fabrica.getElemento(1).imprimir());
+		Assert.assertEquals("<img src=\"imagen.png\"/>\n", fabrica.getElemento(2).imprimir());
+		Assert.assertEquals("<section>\n</section>\n", fabrica.getElemento(3).imprimir());
+		Assert.assertEquals("texto solo\n", fabrica.getElemento(4).imprimir());
+		
+	}
 
 }
