@@ -9,7 +9,7 @@ import org.junit.Test;
 public class OrganizadorDeArchivoTest {
 
 	@Test
-	public void testeaUnaSeccionyElementos() {
+	public void ImprimeUnaSeccionyElementos() {
 
 		OrganizadorDeArchivo organizador = new OrganizadorDeArchivo();
 
@@ -42,7 +42,7 @@ public class OrganizadorDeArchivoTest {
 	}
 
 	@Test
-	public void testeaUnaListayElementos() {
+	public void ImprimeUnaListayElementos() {
 
 		OrganizadorDeArchivo organizador = new OrganizadorDeArchivo();
 
@@ -70,6 +70,38 @@ public class OrganizadorDeArchivoTest {
 				+ "<h2>Subtitulo</h2>\n<lu>\n<li>tercer elemento</li>\n<li>cuarto elemento</li>\n<li>quinto elemento</li>"
 				+ "\n</lu>\n", organizador.imprimir());
 
+	}
+	
+	@Test
+	public void ImprimeUnaListaYSeccionCorrectamente(){
+		
+		OrganizadorDeArchivo organizador = new OrganizadorDeArchivo();
+		
+		List<Elemento> elementos = new LinkedList<Elemento>();
+		
+		Titulo unTitulo = new Titulo("# Titulo");
+		SubTitulo unSubTitulo = new SubTitulo("## Subtitulo");
+		Lista lista = new Lista("*primer elemento");
+		Lista lista2 = new Lista("*segundo elemento");
+		Seccion unaSeccion = new Seccion("---");
+		TextoPlano texto = new TextoPlano("slide 3");
+		Lista lista3 = new Lista("*tercer elemento");
+		
+		
+		elementos.add(unTitulo);
+		elementos.add(unSubTitulo);
+		elementos.add(lista);
+		elementos.add(lista2);
+		elementos.add(unaSeccion);
+		elementos.add(texto);
+		elementos.add(lista3);
+		
+		
+		organizador.organizarElementos(elementos);
+		
+		Assert.assertEquals("<h1>Titulo</h1>\n<h2>Subtitulo</h2>\n<lu>\n<li>primer elemento</li>\n"
+				+ "<li>segundo elemento</li>\n</lu>\n<section>\nslide 3\n</section>\n<lu>"
+				+ "\n<li>tercer elemento</li>\n</lu>\n", organizador.imprimir());
 	}
 
 }
