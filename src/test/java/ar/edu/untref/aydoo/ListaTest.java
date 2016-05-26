@@ -10,7 +10,7 @@ public class ListaTest {
 		
 		Lista lista = new Lista("*algo");
 		
-		Assert.assertEquals("<lu>\n<li>algo</li>\n</lu>\n", lista.imprimir());
+		Assert.assertEquals("<ul>\n<li>algo</li>\n</ul>\n", lista.imprimir());
 	}
 	
 	@Test
@@ -23,7 +23,7 @@ public class ListaTest {
 		lista.agregarElemento(otraLista);
 		lista.agregarElemento(tercerLista);
 		
-		Assert.assertEquals("<lu>\n<li>primera</li>\n<li>segunda</li>\n<li>tercera</li>\n</lu>\n", lista.imprimir());
+		Assert.assertEquals("<ul>\n<li>primera</li>\n<li>segunda</li>\n<li>tercera</li>\n</ul>\n", lista.imprimir());
 	}
 	@Test
 	public void ListaDentroDeOtraListaSeImprimeCorrectamente(){
@@ -37,7 +37,7 @@ public class ListaTest {
 		lista.agregarElemento(tercerLista);
 		lista.agregarElemento(cuartaLista);
 		
-		Assert.assertEquals("<lu>\n<li>algo</li>\n<li>mas</li>\n<li>en</li>\n<li>lista</li>\n</lu>\n", lista.imprimir());
+		Assert.assertEquals("<ul>\n<li>algo</li>\n<li>mas</li>\n<li>en</li>\n<li>lista</li>\n</ul>\n", lista.imprimir());
 	}
 	
 	@Test
@@ -45,7 +45,7 @@ public class ListaTest {
 		
 		Lista lista = new Lista("");
 		
-		Assert.assertEquals("<lu>\n<li></li>\n</lu>\n", lista.imprimir());
+		Assert.assertEquals("<ul>\n<li></li>\n</ul>\n", lista.imprimir());
 	}
 	
 	

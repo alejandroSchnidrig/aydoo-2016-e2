@@ -25,7 +25,7 @@ public class Lista extends Elemento {
 			resultado += "<li>" + actual + "</li>" + "\n";
 		}
 		
-		return "<lu>" + "\n" + "<li>" + this.Dividir(this.contenido) + "</li>" + "\n" +  resultado + "</lu>" + "\n";
+		return "<ul>" + "\n" + "<li>" + this.Dividir(this.contenido) + "</li>" + "\n" +  resultado + "</ul>" + "\n";
 	}
 	
 	public void agregarElemento(Elemento elemento) {

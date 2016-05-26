@@ -66,9 +66,9 @@ public class OrganizadorDeArchivoTest {
 
 		organizador.organizarElementos(elementos);
 
-		Assert.assertEquals("<lu>\n<li>primer elemento</li>\n<li>segundo elemento</li>\n</lu>\n<h1>Titulo</h1>\n"
-				+ "<h2>Subtitulo</h2>\n<lu>\n<li>tercer elemento</li>\n<li>cuarto elemento</li>\n<li>quinto elemento</li>"
-				+ "\n</lu>\n", organizador.imprimir());
+		Assert.assertEquals("<ul>\n<li>primer elemento</li>\n<li>segundo elemento</li>\n</ul>\n<h1>Titulo</h1>\n"
+				+ "<h2>Subtitulo</h2>\n<ul>\n<li>tercer elemento</li>\n<li>cuarto elemento</li>\n<li>quinto elemento</li>"
+				+ "\n</ul>\n", organizador.imprimir());
 
 	}
 	
@@ -99,9 +99,9 @@ public class OrganizadorDeArchivoTest {
 		
 		organizador.organizarElementos(elementos);
 		
-		Assert.assertEquals("<h1>Titulo</h1>\n<h2>Subtitulo</h2>\n<lu>\n<li>primer elemento</li>\n"
-				+ "<li>segundo elemento</li>\n</lu>\n<section>\nslide 3\n</section>\n<lu>"
-				+ "\n<li>tercer elemento</li>\n</lu>\n", organizador.imprimir());
+		Assert.assertEquals("<h1>Titulo</h1>\n<h2>Subtitulo</h2>\n<ul>\n<li>primer elemento</li>\n"
+				+ "<li>segundo elemento</li>\n</ul>\n<section>\nslide 3\n</section>\n<ul>"
+				+ "\n<li>tercer elemento</li>\n</ul>\n", organizador.imprimir());
 	}
 	@Test
 	public void ImprimeUnaSeccionConTituloEImagenCorrectamente(){
@@ -141,6 +141,6 @@ public class OrganizadorDeArchivoTest {
 		
 		organizador.organizarElementos(elementos);
 		
-		Assert.assertEquals("<lu>\n<li>Cosas Importantes</li>\n</lu>\nMi Foto\n<img src=\" mifoto.png\"/>\n", organizador.imprimir());
+		Assert.assertEquals("<ul>\n<li>Cosas Importantes</li>\n</ul>\nMi Foto\n<img src=\" mifoto.png\"/>\n", organizador.imprimir());
 	}
 }
