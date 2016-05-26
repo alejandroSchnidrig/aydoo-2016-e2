@@ -25,12 +25,9 @@ public class Lista extends Elemento {
 			resultado += "<li>" + actual + "</li>" + "\n";
 		}
 		
-		return "<lu>" + "\n" + "<li>" + this.Dividir(this.contenido) + "</li>" + "\n" +  resultado + "</lu>";
+		return "<lu>" + "\n" + "<li>" + this.Dividir(this.contenido) + "</li>" + "\n" +  resultado + "</lu>" + "\n";
 	}
 	
-	
-
-
 	public void agregarElemento(Elemento elemento) {
 		this.elementos.add(elemento.getContenido());
 	}

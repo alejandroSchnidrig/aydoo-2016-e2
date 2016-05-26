@@ -83,7 +83,7 @@ public class ArchivoTest {
 		
 		unArchivo.agregarElemento(lista);
 		
-		Assert.assertEquals("<lu>\n<li></li>\n</lu>", unArchivo.imprimir());
+		Assert.assertEquals("<lu>\n<li></li>\n</lu>\n", unArchivo.imprimir());
 	}
 	
 	@Test
@@ -98,7 +98,7 @@ public class ArchivoTest {
 		lista.agregarElemento(listaTres);
 		unArchivo.agregarElemento(lista);
 		
-		Assert.assertEquals("<lu>\n<li>mi nombre es</li>\n<li>Robbin</li>\n<li>Hood</li>\n</lu>", unArchivo.imprimir());
+		Assert.assertEquals("<lu>\n<li>mi nombre es</li>\n<li>Robbin</li>\n<li>Hood</li>\n</lu>\n", unArchivo.imprimir());
 	}
 
 	@Test
@@ -150,7 +150,7 @@ public class ArchivoTest {
 
 		Assert.assertEquals("<h1>Titulo numero uno</h1>\n<h2>SubTitulo numero uno</h2>\n<section>\n"
 				+ "<h2>SubTitulo numero dos</h2>\n<h1>Titulo numero dos</h1>\n</section>\n<img src=\"unaImagen.png\"/>\n"
-				+ "<lu>\n<li>primer elemento</li>\n<li>segundo elemento</li>\n</lu>"	, unArchivo.imprimir());
+				+ "<lu>\n<li>primer elemento</li>\n<li>segundo elemento</li>\n</lu>\n"	, unArchivo.imprimir());
 		
 
 	}

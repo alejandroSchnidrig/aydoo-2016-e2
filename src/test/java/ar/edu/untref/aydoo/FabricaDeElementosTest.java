@@ -94,7 +94,7 @@ public class FabricaDeElementosTest {
 	}
 
 	@Test
-	public void FabricaConstruyeUnaListaPlanoCorrectamente() {
+	public void FabricaConstruyeUnaListaCorrectamente() {
 
 		FabricaDeElementos fabrica = new FabricaDeElementos();
 
@@ -106,7 +106,7 @@ public class FabricaDeElementosTest {
 
 		fabrica.construirElementos(contenidos);
 
-		Assert.assertEquals("<lu>\n<li>elemento de una lista</li>\n</lu>", fabrica.getElemento(0).imprimir());
+		Assert.assertEquals("<lu>\n<li>elemento de una lista</li>\n</lu>\n", fabrica.getElemento(0).imprimir());
 
 	}
 
@@ -138,7 +138,7 @@ public class FabricaDeElementosTest {
 		Assert.assertEquals("<img src=\"imagen.png\"/>\n", fabrica.getElemento(2).imprimir());
 		Assert.assertEquals("<section>\n</section>\n", fabrica.getElemento(3).imprimir());
 		Assert.assertEquals("texto solo\n", fabrica.getElemento(4).imprimir());
-		Assert.assertEquals("<lu>\n<li>elemento de una lista</li>\n</lu>", fabrica.getElemento(5).imprimir());
+		Assert.assertEquals("<lu>\n<li>elemento de una lista</li>\n</lu>\n", fabrica.getElemento(5).imprimir());
 	}
 
 }

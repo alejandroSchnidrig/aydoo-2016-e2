@@ -51,5 +51,9 @@ public class FabricaDeElementos {
 	public Elemento getElemento(int posicion) {
 		return this.elementos.get(posicion);
 	}
+	
+	public List<Elemento> getListaDeElementos(){
+		return this.elementos;
+	}
 
 }

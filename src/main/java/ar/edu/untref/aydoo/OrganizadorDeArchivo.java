@@ -13,26 +13,60 @@ public class OrganizadorDeArchivo {
 
 	public void organizarElementos(List<Elemento> elementos) {
 
-		Iterator<Elemento> iteradorElementos = elementos.iterator();
-		while (iteradorElementos.hasNext()) {
-			Elemento actual = iteradorElementos.next();
+		Boolean existeSeccion = false;
+		Boolean existeLista = false;
+		Elemento seccionAuxiliar = null;
+		Elemento listaAuxiliar = null;
 
-			if (actual.getContenido().contains("---")) {
-				while (iteradorElementos.hasNext()) {
-					Elemento proximo = iteradorElementos.next();
-					if (proximo.getContenido().contains("---")) {
-						this.unArchivo.agregarElemento(actual);
-						actual = proximo;
-					} else if (!proximo.getContenido().contains("---")) {
-						actual.agregarElemento(proximo);
-					}
-				}
-				this.unArchivo.agregarElemento(actual);
-			} else if (actual.getContenido().contains("*")) {
+		Iterator<Elemento> it = elementos.iterator();
+		while(it.hasNext()){
+			Elemento actual = it.next();
 
-			} else {
+			if(!actual.getContenido().contains("---") && !actual.getContenido().contains("*") && existeSeccion == false	&& existeLista == false){
 				this.unArchivo.agregarElemento(actual);
 			}
+
+			if(actual.getContenido().contains("*") && existeSeccion == true){
+				this.unArchivo.agregarElemento(seccionAuxiliar);
+				existeSeccion = false;
+			}
+
+			if(actual.getContenido().contains("---") && existeLista == true){	
+				this.unArchivo.agregarElemento(listaAuxiliar);
+				existeLista = false;
+			}
+
+			if(!actual.getContenido().contains("*")){
+				if(actual.getContenido().contains("---") && existeSeccion == true){
+					this.unArchivo.agregarElemento(seccionAuxiliar);
+					seccionAuxiliar = actual;
+				}else if (actual.getContenido().contains("---")){
+					seccionAuxiliar = actual;
+					existeSeccion = true;
+				}else if(!actual.getContenido().contains("---") && existeSeccion == true){
+					seccionAuxiliar.agregarElemento(actual);
+				}
+			}
+
+			if(!actual.getContenido().contains("---")){
+				if(!actual.getContenido().contains("*") && existeLista == true){
+					this.unArchivo.agregarElemento(listaAuxiliar);
+					this.unArchivo.agregarElemento(actual);
+					existeLista = false;
+				}else if(actual.getContenido().contains("*") && existeLista == true){
+					listaAuxiliar.agregarElemento(actual);
+				}else if(actual.getContenido().contains("*")){
+					listaAuxiliar = actual;
+					existeLista = true;
+				}
+			}
+			
+		}
+		//
+		if(existeSeccion == true && existeLista == false){
+			this.unArchivo.agregarElemento(seccionAuxiliar);
+		}else if(existeSeccion == false && existeLista == true){
+			this.unArchivo.agregarElemento(listaAuxiliar);
 		}
 	}
 

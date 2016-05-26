@@ -34,10 +34,41 @@ public class OrganizadorDeArchivoTest {
 		elementos.add(subtitulo2);
 
 		organizador.organizarElementos(elementos);
-		
+
 		Assert.assertEquals("<section>\n<h1>slide1 :titulo 1</h1>\n</section>\n<section>\n<h2>slide2: titulo 2</h2>"
-				+ "\n</section>\n<section>\nslide 3\n<h1>titulo 1</h1>\n<h2>titulo 2</h2>\n"
-				+ "</section>\n", organizador.imprimir());
+				+ "\n</section>\n<section>\nslide 3\n<h1>titulo 1</h1>\n<h2>titulo 2</h2>\n" + "</section>\n",
+				organizador.imprimir());
+
+	}
+
+	@Test
+	public void testeaUnaListayElementos() {
+
+		OrganizadorDeArchivo organizador = new OrganizadorDeArchivo();
+
+		List<Elemento> elementos = new LinkedList<Elemento>();
+
+		Lista lista = new Lista("*primer elemento");
+		Lista lista2 = new Lista("*segundo elemento");
+		Titulo unTitulo = new Titulo("# Titulo");
+		SubTitulo unSubTitulo = new SubTitulo("## Subtitulo");
+		Lista lista3 = new Lista("*tercer elemento");
+		Lista lista4 = new Lista("*cuarto elemento");
+		Lista lista5 = new Lista("*quinto elemento");
+
+		elementos.add(lista);
+		elementos.add(lista2);
+		elementos.add(unTitulo);
+		elementos.add(unSubTitulo);
+		elementos.add(lista3);
+		elementos.add(lista4);
+		elementos.add(lista5);
+
+		organizador.organizarElementos(elementos);
+
+		Assert.assertEquals("<lu>\n<li>primer elemento</li>\n<li>segundo elemento</li>\n</lu>\n<h1>Titulo</h1>\n"
+				+ "<h2>Subtitulo</h2>\n<lu>\n<li>tercer elemento</li>\n<li>cuarto elemento</li>\n<li>quinto elemento</li>"
+				+ "\n</lu>\n", organizador.imprimir());
 
 	}
 
