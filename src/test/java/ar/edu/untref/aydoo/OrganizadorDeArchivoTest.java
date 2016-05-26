@@ -123,4 +123,24 @@ public class OrganizadorDeArchivoTest {
 		
 		Assert.assertEquals("<section>\n<h1>Titulo</h1>\n<img src=\" mifoto.png\"/>\n</section>\n", organizador.imprimir());
 	}
+	@Test
+	public void ImprimeListaConTextoPlanoEImagenesCorrectamente(){
+		
+		OrganizadorDeArchivo organizador = new OrganizadorDeArchivo();
+		
+		List<Elemento> elementos = new LinkedList<Elemento>();
+		
+		Lista lista = new Lista("*Cosas Importantes");
+		TextoPlano texto = new TextoPlano("Mi Foto");
+		Imagen imagenPersonal = new Imagen("i: mifoto.png");
+
+		
+		elementos.add(lista);
+		elementos.add(texto);
+		elementos.add(imagenPersonal);
+		
+		organizador.organizarElementos(elementos);
+		
+		Assert.assertEquals("<lu>\n<li>Cosas Importantes</li>\n</lu>\nMi Foto\n<img src=\" mifoto.png\"/>\n", organizador.imprimir());
+	}
 }
