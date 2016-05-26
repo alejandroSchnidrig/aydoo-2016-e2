@@ -103,5 +103,24 @@ public class OrganizadorDeArchivoTest {
 				+ "<li>segundo elemento</li>\n</lu>\n<section>\nslide 3\n</section>\n<lu>"
 				+ "\n<li>tercer elemento</li>\n</lu>\n", organizador.imprimir());
 	}
-
+	@Test
+	public void ImprimeUnaSeccionConTituloEImagenCorrectamente(){
+		
+		OrganizadorDeArchivo organizador = new OrganizadorDeArchivo();
+		
+		List<Elemento> elementos = new LinkedList<Elemento>();
+		
+		Seccion unaSeccion = new Seccion("---");
+		Titulo unTitulo = new Titulo("# Titulo");
+		Imagen imagenPersonal = new Imagen("i: mifoto.png");
+		
+		
+		elementos.add(unaSeccion);
+		elementos.add(unTitulo);
+		elementos.add(imagenPersonal);
+		
+		organizador.organizarElementos(elementos);
+		
+		Assert.assertEquals("<section>\n<h1>Titulo</h1>\n<img src=\" mifoto.png\"/>\n</section>\n", organizador.imprimir());
+	}
 }
