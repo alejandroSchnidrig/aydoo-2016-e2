@@ -17,6 +17,19 @@ public class ArchivoTest {
 	}
 	
 	@Test
+	public void ArchivoGuardaUnContenidoCorrectamente(){
+		
+		Archivo unArchivo = new Archivo("archivo.txt");
+		Elemento unTitulo = new Titulo("# Titulo numero uno");
+		Elemento segundoTitulo = new Titulo("# Titulo numero dos");
+		
+		unArchivo.agregarElemento(unTitulo);
+		unArchivo.agregarElemento(segundoTitulo);
+		
+		Assert.assertEquals("# Titulo numero uno", unArchivo.getContenidoElemento(0));
+	}
+	
+	@Test
 	public void ArchivoImprimeUnSubTituloCorrectamente(){
 		
 		Archivo unArchivo = new Archivo("archivo.txt");
