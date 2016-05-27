@@ -10,10 +10,10 @@ public class GeneradorDeArchivoTest {
 	@Test
 	public void VerificaLaGeneracionDelArchivoConUnElemento() throws IOException{
 		GeneradorDeArchivo generarArchivo = new GeneradorDeArchivo();
-		String ruta =System.getProperty("user.dir" )+ ("/template/index.html");
+		String ruta =System.getProperty("user.dir" )+ ("/template");
 		Elemento nuevoArchivo = new Archivo("");
-
-		generarArchivo.generarArchivoEnDirectorio("template", nuevoArchivo.imprimir());
+		
+		generarArchivo.generarArchivoEnDirectorio("plantilla", nuevoArchivo.imprimir());
 		
 		Assert.assertTrue(generarArchivo.existeArchivo(ruta) == true);
 	}

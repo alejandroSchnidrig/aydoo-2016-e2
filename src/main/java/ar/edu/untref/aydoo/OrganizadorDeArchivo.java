@@ -62,7 +62,7 @@ public class OrganizadorDeArchivo {
 			}
 			
 		}
-		//
+
 		if(existeSeccion == true && existeLista == false){
 			this.unArchivo.agregarElemento(seccionAuxiliar);
 		}else if(existeSeccion == false && existeLista == true){

@@ -17,6 +17,18 @@ public class LectorDeArchivoTest {
 		Assert.assertEquals("##esto es un sub-titulo", lector.getContenido(1));
 		Assert.assertEquals("i:estoEsUnaImagen.png", lector.getContenido(2));
 		Assert.assertEquals("#esto es otro titulo", lector.getContenido(3));
+		Assert.assertEquals(4, lector.getListaDeContenidos().size());
 	}
+	
+	@Test
+	public void seVerificaLaCantidadDeElementosDeLista() throws IOException {
+
+		LectorDeArchivo lector = new LectorDeArchivo();
+		String ruta = System.getProperty("user.dir");
+		lector.leerArchivo(ruta + "/template/textoAProcesar.md");
+
+		Assert.assertEquals(4, lector.getListaDeContenidos().size());
+	}
+
 
 }

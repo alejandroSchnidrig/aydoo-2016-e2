@@ -7,7 +7,7 @@ public class EntradaDeArchivo {
 
 	public void crearCarpetaYArchivo(String rutaArchivo, String tieneOutput) throws IOException, NoExisteDirectorioException, NoExisteArchivoException {
 		File existeArchivoEnRuta = new File(rutaArchivo);
-		File copiaDirectorio = new File(System.getProperty("user.dir"),"/plantilla/");
+		File copiaDirectorio = new File(System.getProperty("user.dir"),"/template/plantilla/");
 		String directorio = "";
 		if(tieneOutput.equals("")){
 			directorio = rutaArchivo.substring(0, rutaArchivo.lastIndexOf('.'));

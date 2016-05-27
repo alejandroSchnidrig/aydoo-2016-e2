@@ -8,7 +8,7 @@ public class GeneradorDeArchivo {
 
 	public void generarArchivoEnDirectorio(String rutaArchivo,String nuevaCadena) throws IOException{
 		EscrituraDeArchivo escribirArchivo = new EscrituraDeArchivo();
-		File directorioArchivo = new File(System.getProperty("user.dir"),"/"+rutaArchivo+"/index.html");
+		File directorioArchivo = new File(System.getProperty("user.dir"),"/template/"+rutaArchivo+"/index.html");
 		if(directorioArchivo.exists()){
 			directorioArchivo.delete();
 		}
