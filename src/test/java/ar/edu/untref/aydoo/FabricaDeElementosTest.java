@@ -111,6 +111,24 @@ public class FabricaDeElementosTest {
 	}
 
 	@Test
+	public void FabricaSeCorroboraLaCantidadDeElementos() {
+
+		FabricaDeElementos fabrica = new FabricaDeElementos();
+
+		List<String> contenidos = new LinkedList<String>();
+
+		String primerContenido = "*elemento de una lista";
+		String segundoContenido = "*segundo elemento de una lista";
+
+		contenidos.add(primerContenido);
+		contenidos.add(segundoContenido);
+
+		fabrica.construirElementos(contenidos);
+
+		Assert.assertEquals(2, fabrica.getListaDeElementos().size());
+
+	}
+	@Test
 	public void FabricaConstruyeseisElementosCorrectamente() {
 
 		FabricaDeElementos fabrica = new FabricaDeElementos();
