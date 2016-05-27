@@ -13,7 +13,7 @@ public class GeneradorDeArchivoTest {
 		String ruta =System.getProperty("user.dir" )+ ("/template/index.html");
 		Elemento nuevoArchivo = new Archivo("");
 
-		generarArchivo.generarArchivoEnDirectorio("template", nuevoArchivo);
+		generarArchivo.generarArchivoEnDirectorio("template", nuevoArchivo.imprimir());
 		
 		Assert.assertTrue(generarArchivo.existeArchivo(ruta) == true);
 	}

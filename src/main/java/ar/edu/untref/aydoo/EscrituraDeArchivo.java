@@ -5,15 +5,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
 public class EscrituraDeArchivo {
 
-	public void grabarArchivoEnDirectorio(Elemento nuevoArchivo,FileWriter escribirArchivo) throws IOException{
-		BufferedWriter bw = new BufferedWriter(escribirArchivo);
-		PrintWriter wr = new PrintWriter(bw);   
-		
-		wr.write(nuevoArchivo.imprimir());
-
+	private BufferedWriter bw;
+	private PrintWriter wr;
+	
+	public void grabarArchivoEnDirectorio(String nuevoArchivo,FileWriter escribirArchivo) throws IOException{
+		bw = new BufferedWriter(escribirArchivo);
+		wr = new PrintWriter(bw);   
+		wr.write(nuevoArchivo);
 		wr.close();
 		bw.close();
 	}

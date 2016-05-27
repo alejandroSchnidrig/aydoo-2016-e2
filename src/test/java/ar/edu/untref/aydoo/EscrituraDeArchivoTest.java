@@ -23,7 +23,7 @@ public class EscrituraDeArchivoTest {
 		
 		nuevoArchivo.agregarElemento(unTitulo);
 		nuevoArchivo.agregarElemento(unSubTitulo);
-		escribirArchivo.grabarArchivoEnDirectorio(nuevoArchivo, escritorArchivo);
+		escribirArchivo.grabarArchivoEnDirectorio(nuevoArchivo.imprimir(), escritorArchivo);
 		
 		lector.leerArchivo(ruta+"/template/EscritorArchivo.txt");
 		

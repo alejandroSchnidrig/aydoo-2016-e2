@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class GeneradorDeArchivo {
 
-	public void generarArchivoEnDirectorio(String rutaArchivo,Elemento listaElementos) throws IOException{
+	public void generarArchivoEnDirectorio(String rutaArchivo,String nuevaCadena) throws IOException{
 		EscrituraDeArchivo escribirArchivo = new EscrituraDeArchivo();
 		File directorioArchivo = new File(System.getProperty("user.dir"),"/"+rutaArchivo+"/index.html");
 		if(directorioArchivo.exists()){
@@ -14,8 +14,10 @@ public class GeneradorDeArchivo {
 		}
 		directorioArchivo.createNewFile();
 
-		FileWriter w = new FileWriter(directorioArchivo);
-		escribirArchivo.grabarArchivoEnDirectorio(listaElementos,w);
+		FileWriter escritorDeArchivo = new FileWriter(directorioArchivo);
+		escribirArchivo.grabarArchivoEnDirectorio(nuevaCadena,escritorDeArchivo);
+			
+		
 	}
 	
 	public boolean existeArchivo(String ruta){
@@ -28,4 +30,5 @@ public class GeneradorDeArchivo {
 		}
 		return existeEnLaRutaEspecificada;
 	}
+
 }
