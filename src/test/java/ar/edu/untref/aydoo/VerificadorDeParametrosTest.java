@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class VerificadorDeParametrosTest {
 
-	@Test (expected = NoExisteArchivoException.class)
+	@Test (expected = NoExisteDirectorioException.class)
 	public void noExisteElArchivoEnLaRutaIndicada() throws IOException, NoExisteDirectorioException, NoExisteArchivoException, CaracteresInvalidosException{
 		VerificadorDeParametros verificoParametros = new VerificadorDeParametros();
 		String[]argumentos = {"output=prueba","mipresentacion.md"};
