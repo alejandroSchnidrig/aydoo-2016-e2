@@ -44,7 +44,7 @@ public class CopiadoDeCarpeta {
 			}
 		}else{
 
-			throw new NoExisteDirectorioException("No existe la ruta especificada");
+			throw new NoExisteDirectorioException();
 
 		}
 	}
