@@ -15,10 +15,10 @@ public class GeneradorDeArchivo {
 		List<String> lineas = new ArrayList<String>();
 	    String unaLinea = null;
 	    String directorio = (System.getProperty("user.dir")+"/"+ rutaArchivo+"/index.html");
-	    System.out.println("El directorio es: " + directorio);
 		File directorioArchivo = new File(directorio);
         FileReader fr = new FileReader(directorioArchivo);
         BufferedReader br = new BufferedReader(fr);
+        System.out.println(lineas.size());
 
         while ((unaLinea = br.readLine()) != null) {
             if (unaLinea.contains(("[este-es-el-texto-a-reemplazar]"))){
@@ -26,6 +26,8 @@ public class GeneradorDeArchivo {
             }
             lineas.add(unaLinea+"\n");
         }
+        System.out.println("Despues del line" +lineas.size());
+
         fr.close();
         br.close();
 

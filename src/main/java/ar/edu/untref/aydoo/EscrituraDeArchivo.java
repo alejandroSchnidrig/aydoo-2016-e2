@@ -11,6 +11,7 @@ public class EscrituraDeArchivo {
 
         FileWriter escribirArchivo = new FileWriter(nuevoArchivo);
         BufferedWriter salidaArchivo = new BufferedWriter(escribirArchivo);
+        System.out.println(lineas.size());
         for(String PalabrasPorLinea: lineas){
         	salidaArchivo.write(PalabrasPorLinea);
         }
