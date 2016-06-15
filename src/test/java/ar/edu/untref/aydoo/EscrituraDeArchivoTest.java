@@ -2,6 +2,7 @@ package ar.edu.untref.aydoo;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Test;
@@ -17,17 +18,20 @@ public class EscrituraDeArchivoTest {
 		List<String> listaDeLineas = new ArrayList<String>();
 		CreadorDeArchivoMD lector = new CreadorDeArchivoMD();
 
+		List<Elemento> elementos = new LinkedList<Elemento>();
 		
-		Elemento nuevoArchivo = new Archivo();
+		CreadorDeArchivoHTML archivoHTML = new CreadorDeArchivoHTML();
 		Elemento unTitulo = new Titulo();
 		Elemento unSubTitulo = new SubTitulo();
 		
 		unTitulo.setContenido("# Titulares Importantes");
 		unSubTitulo.setContenido("## Subtitulos");
 		
-		nuevoArchivo.agregarElemento(unTitulo);
-		nuevoArchivo.agregarElemento(unSubTitulo);
-		listaDeLineas.add(nuevoArchivo.transformarContenidoMD());
+		elementos.add(unTitulo);
+		elementos.add(unSubTitulo);
+		
+		archivoHTML.organizarElementos(elementos);
+		listaDeLineas.add(archivoHTML.TransformarContenidosAHTML());
 		escribirArchivo.grabarArchivoEnDirectorio(ruta, listaDeLineas);
 		
 		lector.crearArchivoMD(ruta);

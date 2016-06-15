@@ -6,12 +6,12 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class OrganizadorDeArchivoTest {
+public class CreadorDeArchivoHTMLTest {
 
 	@Test
 	public void ImprimeUnaSeccionyElementos() {
 
-		OrganizadorDeArchivo organizador = new OrganizadorDeArchivo();
+		CreadorDeArchivoHTML organizador = new CreadorDeArchivoHTML();
 
 		List<Elemento> elementos = new LinkedList<Elemento>();
 
@@ -46,14 +46,14 @@ public class OrganizadorDeArchivoTest {
 
 		Assert.assertEquals("<section>\n<h1>slide1 :titulo 1</h1>\n</section>\n<section>\n<h2>slide2: titulo 2</h2>"
 				+ "\n</section>\n<section>\nslide 3\n<h1>titulo 1</h1>\n<h2>titulo 2</h2>\n" + "</section>\n",
-				organizador.imprimir());
+				organizador.TransformarContenidosAHTML());
 
 	}
 
 	@Test
 	public void ImprimeUnaListayElementos() {
 
-		OrganizadorDeArchivo organizador = new OrganizadorDeArchivo();
+		CreadorDeArchivoHTML organizador = new CreadorDeArchivoHTML();
 
 		List<Elemento> elementos = new LinkedList<Elemento>();
 
@@ -85,14 +85,14 @@ public class OrganizadorDeArchivoTest {
 
 		Assert.assertEquals("<ul>\n<li>primer elemento</li>\n<li>segundo elemento</li>\n</ul>\n<h1>Titulo</h1>\n"
 				+ "<h2>Subtitulo</h2>\n<ul>\n<li>tercer elemento</li>\n<li>cuarto elemento</li>\n<li>quinto elemento</li>"
-				+ "\n</ul>\n", organizador.imprimir());
+				+ "\n</ul>\n", organizador.TransformarContenidosAHTML());
 
 	}
 	
 	@Test
 	public void ImprimeUnaListaYSeccionCorrectamente(){
 		
-		OrganizadorDeArchivo organizador = new OrganizadorDeArchivo();
+		CreadorDeArchivoHTML organizador = new CreadorDeArchivoHTML();
 		
 		List<Elemento> elementos = new LinkedList<Elemento>();
 		
@@ -125,12 +125,12 @@ public class OrganizadorDeArchivoTest {
 		
 		Assert.assertEquals("<h1>Titulo</h1>\n<h2>Subtitulo</h2>\n<ul>\n<li>primer elemento</li>\n"
 				+ "<li>segundo elemento</li>\n</ul>\n<section>\nslide 3\n</section>\n<ul>"
-				+ "\n<li>tercer elemento</li>\n</ul>\n", organizador.imprimir());
+				+ "\n<li>tercer elemento</li>\n</ul>\n", organizador.TransformarContenidosAHTML());
 	}
 	@Test
 	public void ImprimeUnaSeccionConTituloEImagenCorrectamente(){
 		
-		OrganizadorDeArchivo organizador = new OrganizadorDeArchivo();
+		CreadorDeArchivoHTML organizador = new CreadorDeArchivoHTML();
 		
 		List<Elemento> elementos = new LinkedList<Elemento>();
 		
@@ -148,12 +148,12 @@ public class OrganizadorDeArchivoTest {
 		
 		organizador.organizarElementos(elementos);
 		
-		Assert.assertEquals("<section>\n<h1>Titulo</h1>\n<img src=\" mifoto.png\"/>\n</section>\n", organizador.imprimir());
+		Assert.assertEquals("<section>\n<h1>Titulo</h1>\n<img src=\" mifoto.png\"/>\n</section>\n", organizador.TransformarContenidosAHTML());
 	}
 	@Test
 	public void ImprimeListaConTextoPlanoEImagenesCorrectamente(){
 		
-		OrganizadorDeArchivo organizador = new OrganizadorDeArchivo();
+		CreadorDeArchivoHTML organizador = new CreadorDeArchivoHTML();
 		
 		List<Elemento> elementos = new LinkedList<Elemento>();
 		
@@ -171,6 +171,6 @@ public class OrganizadorDeArchivoTest {
 		
 		organizador.organizarElementos(elementos);
 		
-		Assert.assertEquals("<ul>\n<li>Cosas Importantes</li>\n</ul>\nMi Foto\n<img src=\" mifoto.png\"/>\n", organizador.imprimir());
+		Assert.assertEquals("<ul>\n<li>Cosas Importantes</li>\n</ul>\nMi Foto\n<img src=\" mifoto.png\"/>\n", organizador.TransformarContenidosAHTML());
 	}
 }

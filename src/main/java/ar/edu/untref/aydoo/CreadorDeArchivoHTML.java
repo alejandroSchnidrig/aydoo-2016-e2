@@ -1,14 +1,15 @@
 package ar.edu.untref.aydoo;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
-public class OrganizadorDeArchivo {
+public class CreadorDeArchivoHTML {
 
-	private Archivo unArchivo;
+	public List<Elemento> elementos;
 
-	public OrganizadorDeArchivo() {
-		this.unArchivo = new Archivo();
+	public CreadorDeArchivoHTML() {
+		this.elementos = new LinkedList<Elemento>();
 	}
 
 	public void organizarElementos(List<Elemento> elementos) {
@@ -23,22 +24,22 @@ public class OrganizadorDeArchivo {
 			Elemento actual = it.next();
 
 			if(!actual.getContenido().contains("---") && !actual.getContenido().contains("*") && existeSeccion == false	&& existeLista == false){
-				this.unArchivo.agregarElemento(actual);
+				this.elementos.add(actual);
 			}
 
 			if(actual.getContenido().contains("*") && existeSeccion == true){
-				this.unArchivo.agregarElemento(seccionAuxiliar);
+				this.elementos.add(seccionAuxiliar);
 				existeSeccion = false;
 			}
 
 			if(actual.getContenido().contains("---") && existeLista == true){	
-				this.unArchivo.agregarElemento(listaAuxiliar);
+				this.elementos.add(listaAuxiliar);
 				existeLista = false;
 			}
 
 			if(!actual.getContenido().contains("*")){
 				if(actual.getContenido().contains("---") && existeSeccion == true){
-					this.unArchivo.agregarElemento(seccionAuxiliar);
+					this.elementos.add(seccionAuxiliar);
 					seccionAuxiliar = actual;
 				}else if (actual.getContenido().contains("---")){
 					seccionAuxiliar = actual;
@@ -50,8 +51,8 @@ public class OrganizadorDeArchivo {
 
 			if(!actual.getContenido().contains("---")){
 				if(!actual.getContenido().contains("*") && existeLista == true){
-					this.unArchivo.agregarElemento(listaAuxiliar);
-					this.unArchivo.agregarElemento(actual);
+					this.elementos.add(listaAuxiliar);
+					this.elementos.add(actual);
 					existeLista = false;
 				}else if(actual.getContenido().contains("*") && existeLista == true){
 					listaAuxiliar.agregarElemento(actual);
@@ -64,14 +65,22 @@ public class OrganizadorDeArchivo {
 		}
 
 		if(existeSeccion == true && existeLista == false){
-			this.unArchivo.agregarElemento(seccionAuxiliar);
+			this.elementos.add(seccionAuxiliar);
 		}else if(existeSeccion == false && existeLista == true){
-			this.unArchivo.agregarElemento(listaAuxiliar);
+			this.elementos.add(listaAuxiliar);
 		}
 	}
 
-	public String imprimir() {
-		return this.unArchivo.transformarContenidoMD();
+	public String TransformarContenidosAHTML() {
+		
+		String resultado = "";
+		Iterator<Elemento> listaDeElementos = elementos.iterator();
+		while (listaDeElementos.hasNext()) {
+			Elemento actual = listaDeElementos.next();
+			resultado += actual.transformarContenidoMD();
+		}
+		return resultado;
+
 	}
 
 }
