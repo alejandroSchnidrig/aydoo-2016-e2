@@ -15,7 +15,7 @@ public class EscrituraDeArchivoTest {
 		EscrituraDeArchivo escribirArchivo = new EscrituraDeArchivo();
 		String ruta = (System.getProperty("user.dir")+"/template/EscritorArchivo.txt");
 		List<String> listaDeLineas = new ArrayList<String>();
-		LectorDeArchivo lector = new LectorDeArchivo();
+		CreadorDeArchivoMD lector = new CreadorDeArchivoMD();
 
 		
 		Elemento nuevoArchivo = new Archivo();
@@ -30,7 +30,7 @@ public class EscrituraDeArchivoTest {
 		listaDeLineas.add(nuevoArchivo.transformarContenidoMD());
 		escribirArchivo.grabarArchivoEnDirectorio(ruta, listaDeLineas);
 		
-		lector.leerArchivo(ruta);
+		lector.crearArchivoMD(ruta);
 		
 		Assert.assertEquals("<h1>Titulares Importantes</h1>", lector.getContenido(0));
 		Assert.assertEquals("<h2>Subtitulos</h2>", lector.getContenido(1));

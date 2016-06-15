@@ -17,14 +17,12 @@ public class EntradaDeArchivo {
 		File generarDirectorio = new File(directorio);
 		CopiadoDeCarpeta copiarDirectorio = new CopiadoDeCarpeta();
 		GeneradorDeArchivo generarArchivo = new GeneradorDeArchivo();
-		LectorDeArchivo lecturaDeArchivo = new LectorDeArchivo();
-		FabricaDeElementos elementosOrdenados = new FabricaDeElementos();
+		CreadorDeArchivoMD arhcivoMD = new CreadorDeArchivoMD();
 		OrganizadorDeArchivo organizandoElFormato = new OrganizadorDeArchivo();
 		if(existeArchivoEnRuta.exists()){
 			copiarDirectorio.copiarArchivos(copiaDirectorio, generarDirectorio);
-			lecturaDeArchivo.leerArchivo(rutaArchivo);
-			elementosOrdenados.fabricarElementos(lecturaDeArchivo.getListaDeContenidos());
-			organizandoElFormato.organizarElementos(elementosOrdenados.getListaDeElementos());
+			arhcivoMD.crearArchivoMD(rutaArchivo);
+			organizandoElFormato.organizarElementos(arhcivoMD.getListaDeElementos());
 			generarArchivo.generarArchivoEnDirectorio(directorio, organizandoElFormato.imprimir());
 
 		}else{
@@ -34,12 +32,10 @@ public class EntradaDeArchivo {
 	}
 
 	public void mostrarDatosPorPantalla(String rutaArchivo) throws IOException {
-		LectorDeArchivo lecturaDeArchivo = new LectorDeArchivo();
-		FabricaDeElementos elementosOrdenados = new FabricaDeElementos();
+		CreadorDeArchivoMD lecturaDeArchivo = new CreadorDeArchivoMD();
 		OrganizadorDeArchivo organizandoElFormato = new OrganizadorDeArchivo();
-		lecturaDeArchivo.leerArchivo(rutaArchivo);
-		elementosOrdenados.fabricarElementos(lecturaDeArchivo.getListaDeContenidos());
-		organizandoElFormato.organizarElementos(elementosOrdenados.getListaDeElementos());
+		lecturaDeArchivo.crearArchivoMD(rutaArchivo);
+		organizandoElFormato.organizarElementos(lecturaDeArchivo.getListaDeElementos());
 		System.out.println(organizandoElFormato.imprimir());
 	}	
 }
