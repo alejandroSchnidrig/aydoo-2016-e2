@@ -15,14 +15,23 @@ public class OrganizadorDeArchivoTest {
 
 		List<Elemento> elementos = new LinkedList<Elemento>();
 
-		Seccion unaSeccion = new Seccion("---");
-		Titulo slide1 = new Titulo("# slide1 :titulo 1");
-		Seccion unaSeccion2 = new Seccion("---");
-		SubTitulo slide2 = new SubTitulo("## slide2: titulo 2");
-		Seccion unaSeccion3 = new Seccion("---");
-		TextoPlano texto = new TextoPlano("slide 3");
-		Titulo titulo1 = new Titulo("# titulo 1");
-		SubTitulo subtitulo2 = new SubTitulo("## titulo 2");
+		Seccion unaSeccion = new Seccion();
+		Titulo slide1 = new Titulo();
+		Seccion unaSeccion2 = new Seccion();
+		SubTitulo slide2 = new SubTitulo();
+		Seccion unaSeccion3 = new Seccion();
+		TextoPlano texto = new TextoPlano();
+		Titulo titulo1 = new Titulo();
+		SubTitulo subtitulo2 = new SubTitulo();
+		
+		unaSeccion.setContenido("---");
+		slide1.setContenido("# slide1 :titulo 1");
+		unaSeccion2.setContenido("---");
+		slide2.setContenido("## slide2: titulo 2");
+		unaSeccion3.setContenido("---");
+		texto.setContenido("slide 3");
+		titulo1.setContenido("# titulo 1");
+		subtitulo2.setContenido("## titulo 2");
 
 		elementos.add(unaSeccion);
 		elementos.add(slide1);
@@ -48,13 +57,21 @@ public class OrganizadorDeArchivoTest {
 
 		List<Elemento> elementos = new LinkedList<Elemento>();
 
-		Lista lista = new Lista("*primer elemento");
-		Lista lista2 = new Lista("*segundo elemento");
-		Titulo unTitulo = new Titulo("# Titulo");
-		SubTitulo unSubTitulo = new SubTitulo("## Subtitulo");
-		Lista lista3 = new Lista("*tercer elemento");
-		Lista lista4 = new Lista("*cuarto elemento");
-		Lista lista5 = new Lista("*quinto elemento");
+		Lista lista = new Lista();
+		Lista lista2 = new Lista();
+		Titulo unTitulo = new Titulo();
+		SubTitulo unSubTitulo = new SubTitulo();
+		Lista lista3 = new Lista();
+		Lista lista4 = new Lista();
+		Lista lista5 = new Lista();
+		
+		lista.setContenido("*primer elemento");
+		lista2.setContenido("*segundo elemento");
+		unTitulo.setContenido("# Titulo");
+		unSubTitulo.setContenido("## Subtitulo");
+		lista3.setContenido("*tercer elemento");
+		lista4.setContenido("*cuarto elemento");
+		lista5.setContenido("*quinto elemento");
 
 		elementos.add(lista);
 		elementos.add(lista2);
@@ -79,14 +96,21 @@ public class OrganizadorDeArchivoTest {
 		
 		List<Elemento> elementos = new LinkedList<Elemento>();
 		
-		Titulo unTitulo = new Titulo("# Titulo");
-		SubTitulo unSubTitulo = new SubTitulo("## Subtitulo");
-		Lista lista = new Lista("*primer elemento");
-		Lista lista2 = new Lista("*segundo elemento");
-		Seccion unaSeccion = new Seccion("---");
-		TextoPlano texto = new TextoPlano("slide 3");
-		Lista lista3 = new Lista("*tercer elemento");
+		Titulo unTitulo = new Titulo();
+		SubTitulo unSubTitulo = new SubTitulo();
+		Lista lista = new Lista();
+		Lista lista2 = new Lista();
+		Seccion unaSeccion = new Seccion();
+		TextoPlano texto = new TextoPlano();
+		Lista lista3 = new Lista();
 		
+		unTitulo.setContenido("# Titulo");
+		unSubTitulo.setContenido("## Subtitulo");
+		lista.setContenido("*primer elemento");
+		lista2.setContenido("*segundo elemento");
+		unaSeccion.setContenido("---");
+		texto.setContenido("slide 3");
+		lista3.setContenido("*tercer elemento");
 		
 		elementos.add(unTitulo);
 		elementos.add(unSubTitulo);
@@ -110,10 +134,13 @@ public class OrganizadorDeArchivoTest {
 		
 		List<Elemento> elementos = new LinkedList<Elemento>();
 		
-		Seccion unaSeccion = new Seccion("---");
-		Titulo unTitulo = new Titulo("# Titulo");
-		Imagen imagenPersonal = new Imagen("i: mifoto.png");
+		Seccion unaSeccion = new Seccion();
+		Titulo unTitulo = new Titulo();
+		Imagen imagenPersonal = new Imagen();
 		
+		unaSeccion.setContenido("---");
+		unTitulo.setContenido("# Titulo");
+		imagenPersonal.setContenido("i: mifoto.png");
 		
 		elementos.add(unaSeccion);
 		elementos.add(unTitulo);
@@ -130,10 +157,13 @@ public class OrganizadorDeArchivoTest {
 		
 		List<Elemento> elementos = new LinkedList<Elemento>();
 		
-		Lista lista = new Lista("*Cosas Importantes");
-		TextoPlano texto = new TextoPlano("Mi Foto");
-		Imagen imagenPersonal = new Imagen("i: mifoto.png");
-
+		Lista lista = new Lista();
+		TextoPlano texto = new TextoPlano();
+		Imagen imagenPersonal = new Imagen();
+		
+		lista.setContenido("*Cosas Importantes");
+		texto.setContenido("Mi Foto");
+		imagenPersonal.setContenido("i: mifoto.png");
 		
 		elementos.add(lista);
 		elementos.add(texto);

@@ -11,9 +11,9 @@ public class GeneradorDeArchivoTest {
 	public void VerificaLaGeneracionDelArchivoConUnElemento() throws IOException{
 		GeneradorDeArchivo generarArchivo = new GeneradorDeArchivo();
 		String ruta =System.getProperty("user.dir" )+ ("/README.md");
-		Elemento nuevoArchivo = new Archivo("");
+		Elemento nuevoArchivo = new Archivo();
 
-		generarArchivo.generarArchivoEnDirectorio("template", nuevoArchivo.imprimir());
+		generarArchivo.generarArchivoEnDirectorio("template", nuevoArchivo.transformarContenidoMD());
 
 		Assert.assertTrue(generarArchivo.existeArchivo(ruta) == true);
 	}

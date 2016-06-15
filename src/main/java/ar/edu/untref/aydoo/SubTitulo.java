@@ -2,21 +2,50 @@ package ar.edu.untref.aydoo;
 
 public class SubTitulo extends Elemento {
 
-	public SubTitulo(String contenido) {
-		super(contenido);
+	private Elemento siguiente;
+	
+	public SubTitulo(){
+		this.contenido = "";
 	}
 
 	@Override
-	public String imprimir() {
+	public Elemento crearElemento(String contenido) {
 
-		String resultado = "";
+		if (contenido.startsWith("## ")) {
+			SubTitulo unSubTitulo = new SubTitulo();
+			unSubTitulo.setContenido(contenido);
+			return unSubTitulo;
+		} else {
+			return this.siguiente.crearElemento(contenido);
+		}
+
+	}
+
+	@Override
+	public String transformarContenidoMD() {
+
+		String nuevoContenido = "";
 		String[] partes = contenido.split("## ");
-		String nuevoContenido = partes[1];
-		resultado = "<h2>" + nuevoContenido + "</h2>" + "\n";
+		String auxiliar = partes[1];
+		nuevoContenido = "<h2>" + auxiliar + "</h2>" + "\n";
 
-		this.setContenido(resultado);
+		this.setContenido(nuevoContenido);
+		return nuevoContenido;
+	}
 
-		return resultado;
+	@Override
+	public void setSiguiente(Elemento elemento) {
+		this.siguiente = elemento;
+	}
+
+	@Override
+	public Elemento getSiguiente() {
+		return this.siguiente;
+	}
+
+	@Override
+	public void agregarElemento(Elemento elemento) {
+		System.out.println("Un SubTitulo no puede agregar un elemento");
 	}
 
 }

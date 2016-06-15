@@ -18,13 +18,16 @@ public class EscrituraDeArchivoTest {
 		LectorDeArchivo lector = new LectorDeArchivo();
 
 		
-		Elemento nuevoArchivo = new Archivo("");
-		Elemento unTitulo = new Titulo("# Titulares Importantes");
-		Elemento unSubTitulo = new SubTitulo("## Subtitulos");
+		Elemento nuevoArchivo = new Archivo();
+		Elemento unTitulo = new Titulo();
+		Elemento unSubTitulo = new SubTitulo();
+		
+		unTitulo.setContenido("# Titulares Importantes");
+		unSubTitulo.setContenido("## Subtitulos");
 		
 		nuevoArchivo.agregarElemento(unTitulo);
 		nuevoArchivo.agregarElemento(unSubTitulo);
-		listaDeLineas.add(nuevoArchivo.imprimir());
+		listaDeLineas.add(nuevoArchivo.transformarContenidoMD());
 		escribirArchivo.grabarArchivoEnDirectorio(ruta, listaDeLineas);
 		
 		lector.leerArchivo(ruta);

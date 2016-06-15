@@ -6,72 +6,85 @@ import org.junit.Test;
 public class SeccionTest {
 
 	@Test
-	public void SeccionImprimeUntituloCorrectamente() {
+	public void SeccionTransformaUntituloCorrectamente() {
 
-		Seccion unaSeccion = new Seccion("");
-		Elemento unTitulo = new Titulo("# El señor de los anillos");
+		Seccion unaSeccion = new Seccion();
+		Elemento unTitulo = new Titulo();
+		
+		unTitulo.setContenido("# El señor de los anillos");
 
 		unaSeccion.agregarElemento(unTitulo);
 
-		Assert.assertEquals("<section>\n<h1>El señor de los anillos</h1>\n</section>\n", unaSeccion.imprimir());
+		Assert.assertEquals("<section>\n<h1>El señor de los anillos</h1>\n</section>\n", unaSeccion.transformarContenidoMD());
 	}
 	
 	@Test
-	public void SeccionImprimeUnSubTituloCorrectamente() {
+	public void SeccionTransformaUnSubTituloCorrectamente() {
 
-		Seccion unaSeccion = new Seccion("");
-		Elemento unSubTitulo = new SubTitulo("## El señor de los anillos");
+		Seccion unaSeccion = new Seccion();
+		Elemento unSubTitulo = new SubTitulo();
+		unSubTitulo.setContenido("## El señor de los anillos");
 
 		unaSeccion.agregarElemento(unSubTitulo);
 
-		Assert.assertEquals("<section>\n<h2>El señor de los anillos</h2>\n</section>\n", unaSeccion.imprimir());
+		Assert.assertEquals("<section>\n<h2>El señor de los anillos</h2>\n</section>\n", unaSeccion.transformarContenidoMD());
 	}
 	
 	@Test
-	public void SeccionImprimeUnaImagenCorrectamente() {
+	public void SeccionTransformaUnaImagenCorrectamente() {
 
-		Seccion unaSeccion = new Seccion("");
-		Elemento unaImagen = new Imagen("i:imagen.png");
+		Seccion unaSeccion = new Seccion();
+		Elemento unaImagen = new Imagen();
+		unaImagen.setContenido("i:imagen.png");
 
 		unaSeccion.agregarElemento(unaImagen);
 
-		Assert.assertEquals("<section>\n<img src=\"imagen.png\"/>\n</section>\n", unaSeccion.imprimir());
+		Assert.assertEquals("<section>\n<img src=\"imagen.png\"/>\n</section>\n", unaSeccion.transformarContenidoMD());
 	}
 	
 	@Test
-	public void SeccionImprimeUnTextoPlanoCorrectamente() {
+	public void SeccionTransformaUnTextoPlanoCorrectamente() {
 
-		Seccion unaSeccion = new Seccion("");
-		Elemento texto = new TextoPlano("El señor de los anillos");
+		Seccion unaSeccion = new Seccion();
+		Elemento texto = new TextoPlano();
+		texto.setContenido("El señor de los anillos");
 
 		unaSeccion.agregarElemento(texto);
 
-		Assert.assertEquals("<section>\nEl señor de los anillos\n</section>\n", unaSeccion.imprimir());
+		Assert.assertEquals("<section>\nEl señor de los anillos\n</section>\n", unaSeccion.transformarContenidoMD());
 	}
 
 	@Test
-	public void SeccionImprimeDosElementosCorrectamente() {
+	public void SeccionTransformaDosElementosCorrectamente() {
 
-		Seccion otraSeccion = new Seccion("");
-		Elemento unTitulo = new Titulo("# El Hobbit");
-		Elemento SubTitulo = new SubTitulo("## 4000 años antes... ");
+		Seccion otraSeccion = new Seccion();
+		Elemento unTitulo = new Titulo();
+		Elemento SubTitulo = new SubTitulo();
+		
+		unTitulo.setContenido("# El Hobbit");
+		SubTitulo.setContenido("## 4000 años antes... ");
 
 		otraSeccion.agregarElemento(unTitulo);
 		otraSeccion.agregarElemento(SubTitulo);
 
 		Assert.assertEquals("<section>\n<h1>El Hobbit</h1>\n<h2>4000 años antes... </h2>\n</section>\n",
-				otraSeccion.imprimir());
+				otraSeccion.transformarContenidoMD());
 
 	}
 
 	@Test
-	public void SeccionImprimeCuatroElementosCorrectamente() {
+	public void SeccionTransformaCuatroElementosCorrectamente() {
 
-		Seccion otraSeccion = new Seccion("");
-		Elemento unTitulo = new Titulo("# El Hobbit");
-		Elemento SubTitulo = new SubTitulo("## 4000 años antes... ");
-		Elemento unaImagen = new Imagen("i:foto.png");
-		Elemento otroTitulo = new Titulo("# FIN");
+		Seccion otraSeccion = new Seccion();
+		Elemento unTitulo = new Titulo();
+		Elemento SubTitulo = new SubTitulo();
+		Elemento unaImagen = new Imagen();
+		Elemento otroTitulo = new Titulo();
+		
+		unTitulo.setContenido("# El Hobbit");
+		SubTitulo.setContenido("## 4000 años antes... ");
+		unaImagen.setContenido("i:foto.png");
+		otroTitulo.setContenido("# FIN");
 
 		otraSeccion.agregarElemento(unTitulo);
 		otraSeccion.agregarElemento(SubTitulo);
@@ -79,35 +92,38 @@ public class SeccionTest {
 		otraSeccion.agregarElemento(otroTitulo);
 
 		Assert.assertEquals("<section>\n<h1>El Hobbit</h1>\n<h2>4000 años antes... </h2>\n<img src=\"foto.png\"/>\n"
-				+ "<h1>FIN</h1>\n</section>\n", otraSeccion.imprimir());
+				+ "<h1>FIN</h1>\n</section>\n", otraSeccion.transformarContenidoMD());
 
 	}
 
 	@Test
-	public void SeccionSinElementosSeImprimeCorrectamente() {
+	public void SeccionSinElementosSeTransformaCorrectamente() {
 
-		Seccion otraSeccion = new Seccion("");
-		Assert.assertEquals("<section>\n</section>\n", otraSeccion.imprimir());
+		Seccion otraSeccion = new Seccion();
+		Assert.assertEquals("<section>\n</section>\n", otraSeccion.transformarContenidoMD());
 
 	}
 
 	@Test
-	public void NombreDelaSeccionSeimprimeCorrectamente() {
-		Seccion seccion = new Seccion("");
+	public void NombreDelaSeccionSeTransformaCorrectamente() {
+		Seccion seccion = new Seccion();
+		seccion.setContenido("---");
 
-		Assert.assertEquals("", seccion.getContenido());
+		Assert.assertEquals("---", seccion.getContenido());
 
 	}
 	
 	@Test
-	public void SeccionQueContieneOtraSeccionSeImprimeCorrectamente(){
-		Seccion seccion = new Seccion("");
-		Seccion otraSeccion = new Seccion("");
-		Elemento unTitulo = new Titulo("# El Hobbit");
+	public void SeccionQueContieneOtraSeccionSeTransformaCorrectamente(){
+		Seccion seccion = new Seccion();
+		Seccion otraSeccion = new Seccion();
+		Elemento unTitulo = new Titulo();
+		
+		unTitulo.setContenido("# El Hobbit");
 		
 		otraSeccion.agregarElemento(unTitulo);
 		seccion.agregarElemento(otraSeccion);
 		
-		Assert.assertEquals("<section>\n<section>\n<h1>El Hobbit</h1>\n</section>\n</section>\n", seccion.imprimir());
+		Assert.assertEquals("<section>\n<section>\n<h1>El Hobbit</h1>\n</section>\n</section>\n", seccion.transformarContenidoMD());
 	}
 }

@@ -8,7 +8,7 @@ public class OrganizadorDeArchivo {
 	private Archivo unArchivo;
 
 	public OrganizadorDeArchivo() {
-		this.unArchivo = new Archivo("");
+		this.unArchivo = new Archivo();
 	}
 
 	public void organizarElementos(List<Elemento> elementos) {
@@ -71,7 +71,7 @@ public class OrganizadorDeArchivo {
 	}
 
 	public String imprimir() {
-		return this.unArchivo.imprimir();
+		return this.unArchivo.transformarContenidoMD();
 	}
 
 }

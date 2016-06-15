@@ -19,9 +19,9 @@ public class FabricaDeElementosTest {
 
 		contenidos.add(contenido);
 
-		fabrica.construirElementos(contenidos);
+		fabrica.fabricarElementos(contenidos);
 
-		Assert.assertEquals("<h2>un subtitulo</h2>\n", fabrica.getElemento(0).imprimir());
+		Assert.assertEquals("<h2>un subtitulo</h2>\n", fabrica.getElemento(0).transformarContenidoMD());
 
 	}
 
@@ -36,9 +36,9 @@ public class FabricaDeElementosTest {
 
 		contenidos.add(contenido);
 
-		fabrica.construirElementos(contenidos);
+		fabrica.fabricarElementos(contenidos);
 
-		Assert.assertEquals("<h1>un titulo</h1>\n", fabrica.getElemento(0).imprimir());
+		Assert.assertEquals("<h1>un titulo</h1>\n", fabrica.getElemento(0).transformarContenidoMD());
 
 	}
 
@@ -53,9 +53,9 @@ public class FabricaDeElementosTest {
 
 		contenidos.add(contenido);
 
-		fabrica.construirElementos(contenidos);
+		fabrica.fabricarElementos(contenidos);
 
-		Assert.assertEquals("<img src=\"imagen.png\"/>\n", fabrica.getElemento(0).imprimir());
+		Assert.assertEquals("<img src=\"imagen.png\"/>\n", fabrica.getElemento(0).transformarContenidoMD());
 
 	}
 
@@ -70,9 +70,9 @@ public class FabricaDeElementosTest {
 
 		contenidos.add(contenido);
 
-		fabrica.construirElementos(contenidos);
+		fabrica.fabricarElementos(contenidos);
 
-		Assert.assertEquals("<section>\n</section>\n", fabrica.getElemento(0).imprimir());
+		Assert.assertEquals("<section>\n</section>\n", fabrica.getElemento(0).transformarContenidoMD());
 
 	}
 
@@ -87,9 +87,9 @@ public class FabricaDeElementosTest {
 
 		contenidos.add(contenido);
 
-		fabrica.construirElementos(contenidos);
+		fabrica.fabricarElementos(contenidos);
 
-		Assert.assertEquals("texto solo\n", fabrica.getElemento(0).imprimir());
+		Assert.assertEquals("texto solo\n", fabrica.getElemento(0).transformarContenidoMD());
 
 	}
 
@@ -104,9 +104,9 @@ public class FabricaDeElementosTest {
 
 		contenidos.add(contenido);
 
-		fabrica.construirElementos(contenidos);
+		fabrica.fabricarElementos(contenidos);
 
-		Assert.assertEquals("<ul>\n<li>elemento de una lista</li>\n</ul>\n", fabrica.getElemento(0).imprimir());
+		Assert.assertEquals("<ul>\n<li>elemento de una lista</li>\n</ul>\n", fabrica.getElemento(0).transformarContenidoMD());
 
 	}
 
@@ -123,7 +123,7 @@ public class FabricaDeElementosTest {
 		contenidos.add(primerContenido);
 		contenidos.add(segundoContenido);
 
-		fabrica.construirElementos(contenidos);
+		fabrica.fabricarElementos(contenidos);
 
 		Assert.assertEquals(2, fabrica.getListaDeElementos().size());
 
@@ -149,14 +149,14 @@ public class FabricaDeElementosTest {
 		contenidos.add(contenido4);
 		contenidos.add(contenido5);
 
-		fabrica.construirElementos(contenidos);
+		fabrica.fabricarElementos(contenidos);
 
-		Assert.assertEquals("<h2>un subtitulo</h2>\n", fabrica.getElemento(0).imprimir());
-		Assert.assertEquals("<h1>un titulo</h1>\n", fabrica.getElemento(1).imprimir());
-		Assert.assertEquals("<img src=\"imagen.png\"/>\n", fabrica.getElemento(2).imprimir());
-		Assert.assertEquals("<section>\n</section>\n", fabrica.getElemento(3).imprimir());
-		Assert.assertEquals("texto solo\n", fabrica.getElemento(4).imprimir());
-		Assert.assertEquals("<ul>\n<li>elemento de una lista</li>\n</ul>\n", fabrica.getElemento(5).imprimir());
+		Assert.assertEquals("<h2>un subtitulo</h2>\n", fabrica.getElemento(0).transformarContenidoMD());
+		Assert.assertEquals("<h1>un titulo</h1>\n", fabrica.getElemento(1).transformarContenidoMD());
+		Assert.assertEquals("<img src=\"imagen.png\"/>\n", fabrica.getElemento(2).transformarContenidoMD());
+		Assert.assertEquals("<section>\n</section>\n", fabrica.getElemento(3).transformarContenidoMD());
+		Assert.assertEquals("texto solo\n", fabrica.getElemento(4).transformarContenidoMD());
+		Assert.assertEquals("<ul>\n<li>elemento de una lista</li>\n</ul>\n", fabrica.getElemento(5).transformarContenidoMD());
 	}
 
 }

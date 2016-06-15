@@ -6,20 +6,22 @@ import org.junit.Test;
 public class SubTituloTest {
 
 	@Test
-	public void ElContenidoDelTextoEsCorrecto() {
+	public void ElContenidoDelSubTituloSeSeteaCorrectamente() {
 
-		Elemento unSubTitulo = new SubTitulo("## Cargas electricas en el espacio");
+		Elemento unSubTitulo = new SubTitulo();
+		unSubTitulo.setContenido("## SubTitulo");
 
-		Assert.assertEquals("## Cargas electricas en el espacio", unSubTitulo.getContenido());
+		Assert.assertEquals("## SubTitulo", unSubTitulo.getContenido());
 
 	}
 
 	@Test
-	public void ImprimeBienUnTitulo() {
+	public void ElContenidoDelSubTituloSeTransformaCorrectamente() {
 
-		Elemento unSubTitulo = new SubTitulo("## El estudio de la anti-materia");
+		Elemento unSubTitulo = new SubTitulo();
+		unSubTitulo.setContenido("## SubTitulo");
 
-		Assert.assertEquals("<h2>El estudio de la anti-materia</h2>\n", unSubTitulo.imprimir());
+		Assert.assertEquals("<h2>SubTitulo</h2>\n", unSubTitulo.transformarContenidoMD());
 	}
 
 }

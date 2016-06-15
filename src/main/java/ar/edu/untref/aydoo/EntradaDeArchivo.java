@@ -23,7 +23,7 @@ public class EntradaDeArchivo {
 		if(existeArchivoEnRuta.exists()){
 			copiarDirectorio.copiarArchivos(copiaDirectorio, generarDirectorio);
 			lecturaDeArchivo.leerArchivo(rutaArchivo);
-			elementosOrdenados.construirElementos(lecturaDeArchivo.getListaDeContenidos());
+			elementosOrdenados.fabricarElementos(lecturaDeArchivo.getListaDeContenidos());
 			organizandoElFormato.organizarElementos(elementosOrdenados.getListaDeElementos());
 			generarArchivo.generarArchivoEnDirectorio(directorio, organizandoElFormato.imprimir());
 
@@ -38,7 +38,7 @@ public class EntradaDeArchivo {
 		FabricaDeElementos elementosOrdenados = new FabricaDeElementos();
 		OrganizadorDeArchivo organizandoElFormato = new OrganizadorDeArchivo();
 		lecturaDeArchivo.leerArchivo(rutaArchivo);
-		elementosOrdenados.construirElementos(lecturaDeArchivo.getListaDeContenidos());
+		elementosOrdenados.fabricarElementos(lecturaDeArchivo.getListaDeContenidos());
 		organizandoElFormato.organizarElementos(elementosOrdenados.getListaDeElementos());
 		System.out.println(organizandoElFormato.imprimir());
 	}	

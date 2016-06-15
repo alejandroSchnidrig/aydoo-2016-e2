@@ -6,20 +6,22 @@ import org.junit.Test;
 public class TextoPlanoTest {
 
 	@Test
-	public void ElContenidoDelTextoPlanoEsCorrecto() {
+	public void ElContenidoDelTextoPlanoSeSeteaCorrectamente() {
 
-		Elemento textoPlano = new TextoPlano("Integrador de archivos");
+		Elemento textoPlano = new TextoPlano();
+		textoPlano.setContenido("solo texto");
 
-		Assert.assertEquals("Integrador de archivos", textoPlano.getContenido());
+		Assert.assertEquals("solo texto", textoPlano.getContenido());
 
 	}
 
 	@Test
-	public void ImprimeBienElTextoPlano() {
+	public void ElContenidoDelTextoPlanoSeTransformaCorrectamente() {
 
-		Elemento textoPlano = new TextoPlano("El texto es plano");
+		Elemento textoPlano = new TextoPlano();
+		textoPlano.setContenido("solo texto");
 
-		Assert.assertEquals("El texto es plano\n", textoPlano.imprimir());
+		Assert.assertEquals("solo texto\n", textoPlano.transformarContenidoMD());
 	}
 
 }

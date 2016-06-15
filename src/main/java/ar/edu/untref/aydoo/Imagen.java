@@ -2,21 +2,50 @@ package ar.edu.untref.aydoo;
 
 public class Imagen extends Elemento {
 
-	public Imagen(String contenido) {
-		super(contenido);
+	private Elemento siguiente;
+	
+	public Imagen(){
+		this.contenido = "";
 	}
 
 	@Override
-	public String imprimir() {
+	public Elemento crearElemento(String contenido) {
 
-		String resultado = "";
+		if (contenido.startsWith("i:")) {
+			Imagen unaImagen = new Imagen();
+			unaImagen.setContenido(contenido);
+			return unaImagen;
+		} else {
+			return this.siguiente.crearElemento(contenido);
+		}
+
+	}
+
+	@Override
+	public String transformarContenidoMD() {
+
+		String nuevoContenido = "";
 		String[] partes = contenido.split("i:");
-		String nuevoContenido = partes[1];
-		resultado = "<img src=\"" + nuevoContenido + "\"/>" + "\n";
+		String auxiliar = partes[1];
+		nuevoContenido = "<img src=\"" + auxiliar + "\"/>" + "\n";
 
-		this.setContenido(resultado);
+		this.setContenido(nuevoContenido);
+		return nuevoContenido;
+	}
 
-		return resultado;
+	@Override
+	public void setSiguiente(Elemento elemento) {
+		this.siguiente = elemento;
+	}
+
+	@Override
+	public Elemento getSiguiente() {
+		return this.siguiente;
+	}
+
+	@Override
+	public void agregarElemento(Elemento elemento) {
+		System.out.println("Una Imagen no puede agregar un elemento");
 	}
 
 }

@@ -6,31 +6,48 @@ import java.util.List;
 
 public class Archivo extends Elemento {
 
-	private List<Elemento> elementos;
+	public List<Elemento> elementos;
 
-	public Archivo(String contenido) {
-		super(contenido);
+	public Archivo() {
+		this.contenido = "";
 		this.elementos = new LinkedList<Elemento>();
 	}
 
-	public void agregarElemento(Elemento elemento) {
-		elementos.add(elemento);
-	}
-
-	public String getContenidoElemento(int posicion) {
-		return elementos.get(posicion).getContenido();
+	@Override
+	public Elemento crearElemento(String contenido) {
+		return null;
 	}
 
 	@Override
-	public String imprimir() {
+	public String transformarContenidoMD() {
 		
 		String resultado = "";
 		Iterator<Elemento> listaDeElementos = elementos.iterator();
 		while (listaDeElementos.hasNext()) {
 			Elemento actual = listaDeElementos.next();
-			resultado += actual.imprimir();
+			resultado += actual.transformarContenidoMD();
 		}
 		return resultado;
+	}
+
+	@Override
+	public void agregarElemento(Elemento elemento) {
+		this.elementos.add(elemento);
+	}
+	
+	
+
+	@Override
+	public void setSiguiente(Elemento elemento) {
+	}
+
+	@Override
+	public Elemento getSiguiente() {
+		return null;
+	}
+
+	public String getContenidoElemento(int posicion) {
+		return this.elementos.get(posicion).getContenido();
 	}
 
 }

@@ -4,8 +4,8 @@ public abstract class Elemento {
 
 	protected String contenido;
 
-	public Elemento(String contenido) {
-		this.contenido = contenido;
+	public Elemento() {
+		this.contenido = "";
 	}
 
 	public void setContenido(String nuevoContenido) {
@@ -16,9 +16,15 @@ public abstract class Elemento {
 		return this.contenido;
 	}
 
-	public abstract String imprimir();
+	public abstract String transformarContenidoMD();
 	
-	public void agregarElemento(Elemento elemento){
-		System.out.println("No se agregar un elemento");
-	}
+	public abstract Elemento crearElemento(String contenido);
+
+	public abstract void agregarElemento(Elemento elemento);
+
+	public abstract void setSiguiente(Elemento elemento);
+
+	public abstract Elemento getSiguiente();
+
 }
+

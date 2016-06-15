@@ -13,10 +13,10 @@ public class LectorDeArchivoTest {
 		String ruta = System.getProperty("user.dir");
 		lector.leerArchivo(ruta + "/template/textoAProcesar.md");
 
-		Assert.assertEquals("#esto es un titulo", lector.getContenido(0));
-		Assert.assertEquals("##esto es un sub-titulo", lector.getContenido(1));
+		Assert.assertEquals("# esto es un titulo", lector.getContenido(0));
+		Assert.assertEquals("## esto es un sub-titulo", lector.getContenido(1));
 		Assert.assertEquals("i:estoEsUnaImagen.png", lector.getContenido(2));
-		Assert.assertEquals("#esto es otro titulo", lector.getContenido(3));
+		Assert.assertEquals("# esto es otro titulo", lector.getContenido(3));
 		Assert.assertEquals(4, lector.getListaDeContenidos().size());
 	}
 	

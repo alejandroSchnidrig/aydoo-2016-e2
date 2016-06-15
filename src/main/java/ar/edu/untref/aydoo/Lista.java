@@ -5,17 +5,31 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Lista extends Elemento {
-	
-	List<String> elementos;
 
-	public Lista(String contenido) {
-		super(contenido);
+	private Elemento siguiente;
+	public List<String> elementos;
+
+	public Lista() {
+		this.contenido = "";
 		this.elementos = new LinkedList<String>();
 	}
 
-	
-	public String imprimir() {
-			
+	@Override
+	public Elemento crearElemento(String contenido) {
+
+		if (contenido.startsWith("*")) {
+			Lista unaLista = new Lista();
+			unaLista.setContenido(contenido);
+			return unaLista;
+		} else {
+			return this.siguiente.crearElemento(contenido);
+		}
+
+	}
+
+	@Override
+	public String transformarContenidoMD() {
+
 		String resultado = "";
 
 		Iterator<String> iteradorLista = this.elementos.iterator();
@@ -24,25 +38,36 @@ public class Lista extends Elemento {
 			actual = this.Dividir(actual);
 			resultado += "<li>" + actual + "</li>" + "\n";
 		}
-		
-		return "<ul>" + "\n" + "<li>" + this.Dividir(this.contenido) + "</li>" + "\n" +  resultado + "</ul>" + "\n";
+
+		return "<ul>" + "\n" + "<li>" + this.Dividir(this.contenido) + "</li>" + "\n" + resultado + "</ul>" + "\n";
 	}
-	
-	public void agregarElemento(Elemento elemento) {
-		this.elementos.add(elemento.getContenido());
-	}
-	
-	private String Dividir(String contenido){
-		
-		String resultado = contenido;
-		
-		if(resultado.contains("*")){
-			String[] partes = contenido.split("\\*");
+
+	private String Dividir(String actual) {
+
+		String resultado = actual;
+
+		if (resultado.contains("*")) {
+			String[] partes = actual.split("\\*");
 			String nuevoContenido = partes[1];
 			resultado = nuevoContenido;
-		}	
-		
+		}
+
 		return resultado;
+	}
+
+	@Override
+	public void setSiguiente(Elemento elemento) {
+		this.siguiente = elemento;
+	}
+
+	@Override
+	public Elemento getSiguiente() {
+		return this.siguiente;
+	}
+
+	@Override
+	public void agregarElemento(Elemento elemento) {
+		this.elementos.add(elemento.getContenido());
 	}
 
 }

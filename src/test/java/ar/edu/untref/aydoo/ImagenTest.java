@@ -6,20 +6,22 @@ import org.junit.Test;
 public class ImagenTest {
 
 	@Test
-	public void ElContenidoDelaimagenEsCorrecto() {
+	public void ElContenidoDelaImagenSeSeteaCorrectamente() {
 
-		Elemento unaImagen = new Imagen("i:imagen.png");
+		Elemento unaImagen = new Imagen();
+		unaImagen.setContenido("i:imagen.png");
 
 		Assert.assertEquals("i:imagen.png", unaImagen.getContenido());
 
 	}
 
 	@Test
-	public void ImprimeBienUnaImagen() {
+	public void ElContenidoDelaImagenSeTransformaCorrectamente() {
 
-		Elemento unaImagen = new Imagen("i:imagen.png");
+		Elemento unaImagen = new Imagen();
+		unaImagen.setContenido("i:imagen.png");
 
-		Assert.assertEquals("<img src=\"imagen.png\"/>\n", unaImagen.imprimir());
+		Assert.assertEquals("<img src=\"imagen.png\"/>\n", unaImagen.transformarContenidoMD());
 	}
 
 }
