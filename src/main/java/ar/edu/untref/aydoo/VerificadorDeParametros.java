@@ -39,20 +39,22 @@ public class VerificadorDeParametros {
 				proximo = auxiliar;
 			}
 
-			if (nuevo.toLowerCase().equals("--mode=default") && !validarParametrosIncorrectos(proximo)) {
-				nuevoLector.crearCarpetaYArchivo(proximo, "");
-			} else if (nuevo.toLowerCase().equals("--mode=no-output") && !validarParametrosIncorrectos(proximo)) {
-				nuevoLector.mostrarDatosPorPantalla(proximo);
-			} else {
-				if (!(nuevo.substring(0, 2).equals("--")) && !validarParametrosIncorrectos(nuevo)) {
-					nuevoLector.crearCarpetaYArchivo(nuevo, "");
-				} else if (nuevo.toLowerCase().substring(0, 9).equals("--output=")
-						&& !validarParametrosIncorrectos(nuevo)) {
-					nuevoLector.crearCarpetaYArchivo(proximo, nuevo.substring(9));
+			if(!validarParametrosIncorrectos(nuevo)|| !validarParametrosIncorrectos(proximo)){
+
+				if (nuevo.toLowerCase().equals("--mode=default")) {
+					nuevoLector.crearCarpetaYArchivo(proximo, "");
+				} else if (nuevo.toLowerCase().equals("--mode=no-output")) {
+					nuevoLector.mostrarDatosPorPantalla(proximo);
+				} else {
+					if (!(nuevo.substring(0, 2).equals("--"))) {
+						nuevoLector.crearCarpetaYArchivo(nuevo, "");
+					} else if (nuevo.toLowerCase().substring(0, 9).equals("--output=")
+							&& !validarParametrosIncorrectos(nuevo)) {
+						nuevoLector.crearCarpetaYArchivo(proximo, nuevo.substring(9));
+					}
 				}
 			}
 		}
-
 	}
 
 	private boolean validarParametrosIncorrectos(String cadenaCaracteres) throws CaracteresInvalidosException {
