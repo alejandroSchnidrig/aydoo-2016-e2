@@ -3,7 +3,7 @@ package ar.edu.untref.aydoo;
 import java.io.File;
 import java.io.IOException;
 
-public class EntradaDeArchivo {
+public class GeneradorSalida {
 
 	public void crearCarpetaYArchivo(String rutaArchivo, String tieneOutput) throws IOException, NoExisteDirectorioException, NoExisteArchivoException {
 		File existeArchivoEnRuta = new File(rutaArchivo);
