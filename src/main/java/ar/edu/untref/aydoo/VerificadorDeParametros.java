@@ -15,7 +15,7 @@ public class VerificadorDeParametros {
 
 	public void lectorDeParametros(String argumentos[])
 			throws IOException, NoExisteDirectorioException, NoExisteArchivoException, CaracteresInvalidosException {
-		EntradaDeArchivo nuevoLector = new EntradaDeArchivo();
+		GeneradorSalida nuevoLector = new GeneradorSalida();
 
 		for (int contador = 0; contador < argumentos.length; contador++) {
 
