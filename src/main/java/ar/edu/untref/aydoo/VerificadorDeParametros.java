@@ -9,55 +9,57 @@ public class VerificadorDeParametros {
 
 	private List<String> nuevaLista;
 
-	public VerificadorDeParametros(){
+	public VerificadorDeParametros() {
 		nuevaLista = new LinkedList<String>();
 	}
 
-	public void lectorDeParametros(String argumentos[]) throws IOException, NoExisteDirectorioException, NoExisteArchivoException, CaracteresInvalidosException{
+	public void lectorDeParametros(String argumentos[])
+			throws IOException, NoExisteDirectorioException, NoExisteArchivoException, CaracteresInvalidosException {
 		EntradaDeArchivo nuevoLector = new EntradaDeArchivo();
 
-		for(int contador= 0; contador < argumentos.length;contador++){
+		for (int contador = 0; contador < argumentos.length; contador++) {
 
 			this.nuevaLista.add(argumentos[contador]);
 
 		}
 		Iterator<String> iterador = this.nuevaLista.iterator();
-		String nuevo="";
-		String proximo ="";
-		String auxiliar="";
-		while (iterador.hasNext()){
+		String nuevo = "";
+		String proximo = "";
+		String auxiliar = "";
+		while (iterador.hasNext()) {
 			nuevo = iterador.next();
 
-			if(iterador.hasNext()){
+			if (iterador.hasNext()) {
 				proximo = iterador.next();
 			}
 
-			if (!(nuevo.substring(0, 2).equals("--")) && (!(proximo==""))){
+			if (!(nuevo.substring(0, 2).equals("--")) && (!(proximo == ""))) {
 				auxiliar = nuevo;
 				nuevo = proximo;
 				proximo = auxiliar;
 			}
 
-			if(nuevo.toLowerCase().equals("--mode=default") && !validarParametrosIncorrectos(proximo)){
+			if (nuevo.toLowerCase().equals("--mode=default") && !validarParametrosIncorrectos(proximo)) {
 				nuevoLector.crearCarpetaYArchivo(proximo, "");
-			}else if (nuevo.toLowerCase().equals("--mode=no-output") && !validarParametrosIncorrectos(proximo)){
-				nuevoLector.mostrarDatosPorPantalla (proximo);
-			}else{
-				if(!(nuevo.substring(0, 2).equals("--")) && !validarParametrosIncorrectos(nuevo)){
+			} else if (nuevo.toLowerCase().equals("--mode=no-output") && !validarParametrosIncorrectos(proximo)) {
+				nuevoLector.mostrarDatosPorPantalla(proximo);
+			} else {
+				if (!(nuevo.substring(0, 2).equals("--")) && !validarParametrosIncorrectos(nuevo)) {
 					nuevoLector.crearCarpetaYArchivo(nuevo, "");
-				}else if(nuevo.toLowerCase().substring(0,9).equals("--output=") && !validarParametrosIncorrectos(nuevo)){
-					nuevoLector.crearCarpetaYArchivo (proximo,nuevo.substring(9));
+				} else if (nuevo.toLowerCase().substring(0, 9).equals("--output=")
+						&& !validarParametrosIncorrectos(nuevo)) {
+					nuevoLector.crearCarpetaYArchivo(proximo, nuevo.substring(9));
 				}
 			}
 		}
 
-
 	}
-	private boolean validarParametrosIncorrectos(String cadenaCaracteres) throws CaracteresInvalidosException{
+
+	private boolean validarParametrosIncorrectos(String cadenaCaracteres) throws CaracteresInvalidosException {
 		boolean tieneCaracteresIncorrectos = false;
-		if(cadenaCaracteres.toLowerCase().contains("ñ")||cadenaCaracteres.toLowerCase().contains("á")||
-				cadenaCaracteres.toLowerCase().contains("é")||cadenaCaracteres.toLowerCase().contains("í")
-				||cadenaCaracteres.toLowerCase().contains("ó")|| cadenaCaracteres.toLowerCase().contains("ú")) {
+		if (cadenaCaracteres.toLowerCase().contains("ñ") || cadenaCaracteres.toLowerCase().contains("á")
+				|| cadenaCaracteres.toLowerCase().contains("é") || cadenaCaracteres.toLowerCase().contains("í")
+				|| cadenaCaracteres.toLowerCase().contains("ó") || cadenaCaracteres.toLowerCase().contains("ú")) {
 			throw new CaracteresInvalidosException();
 		}
 

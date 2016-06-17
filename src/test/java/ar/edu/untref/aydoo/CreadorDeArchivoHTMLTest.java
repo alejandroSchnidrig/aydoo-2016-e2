@@ -64,6 +64,7 @@ public class CreadorDeArchivoHTMLTest {
 		Lista lista3 = new Lista();
 		Lista lista4 = new Lista();
 		Lista lista5 = new Lista();
+		Titulo unTitulo2 = new Titulo();
 		
 		lista.setContenido("*primer elemento");
 		lista2.setContenido("*segundo elemento");
@@ -72,6 +73,8 @@ public class CreadorDeArchivoHTMLTest {
 		lista3.setContenido("*tercer elemento");
 		lista4.setContenido("*cuarto elemento");
 		lista5.setContenido("*quinto elemento");
+		unTitulo2.setContenido("# final");
+		
 
 		elementos.add(lista);
 		elementos.add(lista2);
@@ -80,12 +83,13 @@ public class CreadorDeArchivoHTMLTest {
 		elementos.add(lista3);
 		elementos.add(lista4);
 		elementos.add(lista5);
+		elementos.add(unTitulo2);
 
 		organizador.organizarElementos(elementos);
 
 		Assert.assertEquals("<ul>\n<li>primer elemento</li>\n<li>segundo elemento</li>\n</ul>\n<h1>Titulo</h1>\n"
 				+ "<h2>Subtitulo</h2>\n<ul>\n<li>tercer elemento</li>\n<li>cuarto elemento</li>\n<li>quinto elemento</li>"
-				+ "\n</ul>\n", organizador.TransformarContenidosAHTML());
+				+ "\n</ul>\n<h1>final</h1>\n", organizador.TransformarContenidosAHTML());
 
 	}
 	
@@ -124,8 +128,8 @@ public class CreadorDeArchivoHTMLTest {
 		organizador.organizarElementos(elementos);
 		
 		Assert.assertEquals("<h1>Titulo</h1>\n<h2>Subtitulo</h2>\n<ul>\n<li>primer elemento</li>\n"
-				+ "<li>segundo elemento</li>\n</ul>\n<section>\nslide 3\n</section>\n<ul>"
-				+ "\n<li>tercer elemento</li>\n</ul>\n", organizador.TransformarContenidosAHTML());
+				+ "<li>segundo elemento</li>\n</ul>\n<section>\nslide 3\n<ul>"
+				+ "\n<li>tercer elemento</li>\n</ul>\n</section>\n", organizador.TransformarContenidosAHTML());
 	}
 	@Test
 	public void ImprimeUnaSeccionConTituloEImagenCorrectamente(){
@@ -173,4 +177,68 @@ public class CreadorDeArchivoHTMLTest {
 		
 		Assert.assertEquals("<ul>\n<li>Cosas Importantes</li>\n</ul>\nMi Foto\n<img src=\" mifoto.png\"/>\n", organizador.TransformarContenidosAHTML());
 	}
+	
+	@Test
+	public void creaArchivoHmtlDeListasySeccionesCorrectamente(){
+		
+		CreadorDeArchivoHTML organizador = new CreadorDeArchivoHTML();
+		
+		List<Elemento> elementos = new LinkedList<Elemento>();
+		
+		Lista lista1 = new Lista();
+		Seccion seccion1 = new Seccion();
+		Lista lista2 = new Lista();
+		Seccion seccion2 = new Seccion();
+		Lista lista3 = new Lista();
+		Lista lista4 = new Lista();
+		Seccion seccion3 = new Seccion();
+		Lista lista5 = new Lista();
+		Lista lista6 = new Lista();
+		Lista lista7 = new Lista();
+		
+		lista1.setContenido("*lista 1");
+		lista2.setContenido("*lista 2");
+		lista3.setContenido("*lista 3");
+		lista4.setContenido("*lista 4");
+		lista5.setContenido("*lista 5");
+		lista6.setContenido("*lista 6");
+		lista7.setContenido("*lista 7");
+		seccion1.setContenido("---");
+		seccion2.setContenido("---");
+		seccion3.setContenido("---");
+		
+		elementos.add(lista1);
+		elementos.add(seccion1);
+		elementos.add(lista2);
+		elementos.add(seccion2);
+		elementos.add(lista3);
+		elementos.add(lista4);
+		elementos.add(seccion3);
+		elementos.add(lista5);
+		elementos.add(lista6);
+		elementos.add(lista7);
+		
+		organizador.organizarElementos(elementos);
+		
+		Assert.assertEquals("<ul>\n<li>lista 1</li>\n</ul>\n<section>\n<ul>\n<li>lista 2</li>\n</ul>\n</section>\n"
+				+ "<section>\n<ul>\n<li>lista 3</li>\n<li>lista 4</li>\n</ul>\n</section>\n"
+				+ "<section>\n<ul>\n<li>lista 5</li>\n<li>lista 6</li>\n<li>lista 7</li>\n</ul>\n</section>\n", organizador.TransformarContenidosAHTML());
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

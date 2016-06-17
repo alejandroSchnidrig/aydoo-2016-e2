@@ -13,62 +13,77 @@ public class CreadorDeArchivoHTML {
 	}
 
 	public void organizarElementos(List<Elemento> elementos) {
-
-		Boolean existeSeccion = false;
-		Boolean existeLista = false;
-		Elemento seccionAuxiliar = null;
-		Elemento listaAuxiliar = null;
+		
+		List<Elemento> unaLista = this.organizaListas(elementos);
+		this.elementos = this.organizaSecciones(unaLista);
+	}
+	
+	private List<Elemento> organizaListas(List<Elemento> elementos){
+		
+		List<Elemento> listaAuxiliar = new LinkedList<Elemento>();
+		Elemento lista = null;
+		boolean existeLista = false;
 
 		Iterator<Elemento> it = elementos.iterator();
-		while(it.hasNext()){
-			Elemento actual = it.next();
-
-			if(!actual.getContenido().contains("---") && !actual.getContenido().contains("*") && existeSeccion == false	&& existeLista == false){
-				this.elementos.add(actual);
-			}
-
-			if(actual.getContenido().contains("*") && existeSeccion == true){
-				this.elementos.add(seccionAuxiliar);
-				existeSeccion = false;
-			}
-
-			if(actual.getContenido().contains("---") && existeLista == true){	
-				this.elementos.add(listaAuxiliar);
-				existeLista = false;
-			}
-
-			if(!actual.getContenido().contains("*")){
-				if(actual.getContenido().contains("---") && existeSeccion == true){
-					this.elementos.add(seccionAuxiliar);
-					seccionAuxiliar = actual;
-				}else if (actual.getContenido().contains("---")){
-					seccionAuxiliar = actual;
-					existeSeccion = true;
-				}else if(!actual.getContenido().contains("---") && existeSeccion == true){
-					seccionAuxiliar.agregarElemento(actual);
-				}
-			}
-
-			if(!actual.getContenido().contains("---")){
-				if(!actual.getContenido().contains("*") && existeLista == true){
-					this.elementos.add(listaAuxiliar);
-					this.elementos.add(actual);
-					existeLista = false;
-				}else if(actual.getContenido().contains("*") && existeLista == true){
-					listaAuxiliar.agregarElemento(actual);
-				}else if(actual.getContenido().contains("*")){
-					listaAuxiliar = actual;
+			while(it.hasNext()){
+				Elemento actual = it.next();
+		
+				if(actual.getContenido().contains("*") && existeLista == false){
+					lista = actual;
 					existeLista = true;
+	            }else if (actual.getContenido().contains("*") && existeLista == true){
+					lista.agregarElemento(actual);
+				}
+	                 
+				if(!actual.getContenido().contains("*") && existeLista == true){
+			 		listaAuxiliar.add(lista);
+					listaAuxiliar.add(actual);
+					existeLista = false;
+				}else if(!actual.getContenido().contains("*") && existeLista == false){
+					listaAuxiliar.add(actual);
 				}
 			}
 			
-		}
+			if(existeLista == true){
+				listaAuxiliar.add(lista);
+			}
+		
+		return listaAuxiliar;
+		
+	}
+	
+	private List<Elemento> organizaSecciones(List<Elemento> elementos){
+		
+		List<Elemento> listaAuxiliar = new LinkedList<Elemento>();
+		Elemento seccion = null;
+		boolean existeSeccion = false;
+	
 
-		if(existeSeccion == true && existeLista == false){
-			this.elementos.add(seccionAuxiliar);
-		}else if(existeSeccion == false && existeLista == true){
-			this.elementos.add(listaAuxiliar);
-		}
+		Iterator<Elemento> it = elementos.iterator();
+			while(it.hasNext()){
+				Elemento actual = it.next();
+		
+				if(actual.getContenido().contains("---") && existeSeccion == false){
+					seccion = actual;
+					existeSeccion = true;
+	            }else if (actual.getContenido().contains("---") && existeSeccion == true){
+	            	listaAuxiliar.add(seccion);
+	            	seccion = actual;
+				}
+	                 
+				if(!actual.getContenido().contains("---") && existeSeccion == true){
+					seccion.agregarElemento(actual);
+				}else if(!actual.getContenido().contains("---") && existeSeccion == false){
+					listaAuxiliar.add(actual);
+				}
+			}
+			
+			if(existeSeccion == true){
+				listaAuxiliar.add(seccion);
+			}
+		
+		return listaAuxiliar;
+		
 	}
 
 	public String TransformarContenidosAHTML() {
