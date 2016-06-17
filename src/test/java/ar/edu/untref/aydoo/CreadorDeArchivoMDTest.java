@@ -11,7 +11,7 @@ public class CreadorDeArchivoMDTest {
 
 		CreadorDeArchivoMD creador = new CreadorDeArchivoMD();
 		String ruta = System.getProperty("user.dir");
-		creador.crearArchivoMD(ruta + "/template/textoAProcesar.md");
+		creador.crearArchivoMD(ruta + "/archivosDeEjemplo/textoAProcesar.md");
 
 		Assert.assertEquals("# esto es un titulo", creador.getContenido(0));
 		Assert.assertEquals("## esto es un sub-titulo", creador.getContenido(1));
@@ -27,7 +27,7 @@ public class CreadorDeArchivoMDTest {
 
 		CreadorDeArchivoMD lector = new CreadorDeArchivoMD();
 		String ruta = System.getProperty("user.dir");
-		lector.crearArchivoMD(ruta + "/template/textoAProcesar.md");
+		lector.crearArchivoMD(ruta + "/archivosDeEjemplo/textoAProcesar.md");
 
 		Assert.assertEquals(5, lector.getListaDeElementos().size());
 	}
@@ -38,7 +38,7 @@ public class CreadorDeArchivoMDTest {
 		CreadorDeArchivoMD creador = new CreadorDeArchivoMD();
 		
 		String ruta = System.getProperty("user.dir");
-		creador.crearArchivoMD(ruta + "/template/textoAProcesar.md");
+		creador.crearArchivoMD(ruta + "/archivosDeEjemplo/textoAProcesar.md");
 
 		Assert.assertEquals("<h1>esto es un titulo</h1>\n", creador.getElemento(0).transformarContenidoMD());
 	}
@@ -49,7 +49,7 @@ public class CreadorDeArchivoMDTest {
 		CreadorDeArchivoMD creador = new CreadorDeArchivoMD();
 		
 		String ruta = System.getProperty("user.dir");
-		creador.crearArchivoMD(ruta + "/template/textoAProcesar.md");
+		creador.crearArchivoMD(ruta + "/archivosDeEjemplo/textoAProcesar.md");
 
 		Assert.assertEquals("<h2>esto es un sub-titulo</h2>\n", creador.getElemento(1).transformarContenidoMD());
 	}
@@ -60,7 +60,7 @@ public class CreadorDeArchivoMDTest {
 		CreadorDeArchivoMD creador = new CreadorDeArchivoMD();
 		
 		String ruta = System.getProperty("user.dir");
-		creador.crearArchivoMD(ruta + "/template/textoAProcesar.md");
+		creador.crearArchivoMD(ruta + "/archivosDeEjemplo/textoAProcesar.md");
 
 		Assert.assertEquals("<img src=\"estoEsUnaImagen.png\"/>\n", creador.getElemento(2).transformarContenidoMD());
 	}
@@ -71,7 +71,7 @@ public class CreadorDeArchivoMDTest {
 		CreadorDeArchivoMD creador = new CreadorDeArchivoMD();
 		
 		String ruta = System.getProperty("user.dir");
-		creador.crearArchivoMD(ruta + "/template/seccion.md");
+		creador.crearArchivoMD(ruta + "/archivosDeEjemplo/seccion.md");
 
 		Assert.assertEquals("<section>\n</section>\n", creador.getElemento(0).transformarContenidoMD());
 	}
@@ -82,7 +82,7 @@ public class CreadorDeArchivoMDTest {
 		CreadorDeArchivoMD creador = new CreadorDeArchivoMD();
 		
 		String ruta = System.getProperty("user.dir");
-		creador.crearArchivoMD(ruta + "/template/lista.md");
+		creador.crearArchivoMD(ruta + "/archivosDeEjemplo/lista.md");
 
 		Assert.assertEquals("<ul>\n<li>Una lista</li>\n</ul>\n", creador.getElemento(0).transformarContenidoMD());
 	}
@@ -93,7 +93,7 @@ public class CreadorDeArchivoMDTest {
 		CreadorDeArchivoMD creador = new CreadorDeArchivoMD();
 		
 		String ruta = System.getProperty("user.dir");
-		creador.crearArchivoMD(ruta + "/template/textoAProcesar.md");
+		creador.crearArchivoMD(ruta + "/archivosDeEjemplo/textoAProcesar.md");
 
 		Assert.assertEquals("textoplano\n", creador.getElemento(4).transformarContenidoMD());
 	}
@@ -105,7 +105,7 @@ public class CreadorDeArchivoMDTest {
 		CreadorDeArchivoMD creador = new CreadorDeArchivoMD();
 		
 		String ruta = System.getProperty("user.dir");
-		creador.crearArchivoMD(ruta + "/template/SeisElementos.md");
+		creador.crearArchivoMD(ruta + "/archivosDeEjemplo/SeisElementos.md");
 
 		Assert.assertEquals("<h1>titulo</h1>\n", creador.getElemento(0).transformarContenidoMD());
 		Assert.assertEquals("<h2>subtitulo</h2>\n", creador.getElemento(1).transformarContenidoMD());

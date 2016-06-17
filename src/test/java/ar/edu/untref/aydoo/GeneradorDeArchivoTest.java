@@ -13,7 +13,7 @@ public class GeneradorDeArchivoTest {
 		String ruta =System.getProperty("user.dir" )+ ("/README.md");
 		CreadorDeArchivoHTML archivoHTML = new CreadorDeArchivoHTML();
 
-		generarArchivo.generarArchivoEnDirectorio("template", archivoHTML.TransformarContenidosAHTML());
+		generarArchivo.generarArchivoEnDirectorio("archivosDeEjemplo", archivoHTML.TransformarContenidosAHTML());
 
 		Assert.assertTrue(generarArchivo.existeArchivo(ruta) == true);
 	}

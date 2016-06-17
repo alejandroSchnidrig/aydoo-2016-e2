@@ -14,7 +14,7 @@ public class EscrituraDeArchivoTest {
 	@Test
 	public void seEscribeArchivoConDosElementos() throws IOException{
 		EscrituraDeArchivo escribirArchivo = new EscrituraDeArchivo();
-		String ruta = (System.getProperty("user.dir")+"/template/EscritorArchivo.txt");
+		String ruta = (System.getProperty("user.dir")+"/archivosDeEjemplo/EscritorArchivo.txt");
 		List<String> listaDeLineas = new ArrayList<String>();
 		CreadorDeArchivoMD lector = new CreadorDeArchivoMD();
 
