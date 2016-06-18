@@ -64,5 +64,19 @@ public class FabricaDeElementosTest {
 
 		Assert.assertEquals("texto solo\n", nuevoElemento.transformarContenidoMD());
 	}
+	
+	@Test
+	public void FabricaConstruyeDosElementosYVerificaElSiguiente() {
+
+		FabricaDeElementos fabrica = new FabricaDeElementos();
+
+		String contenido = "texto solo";
+		String contenidoSeccion = "---";
+		
+		Elemento nuevoElemento = fabrica.crearElementos(contenido);
+		Elemento nuevoElementoSeccion = fabrica.crearElementos(contenidoSeccion);
+		nuevoElemento.setSiguiente(nuevoElementoSeccion);
+		Assert.assertEquals("<section>\n</section>\n", nuevoElemento.getSiguiente().transformarContenidoMD());
+	}
 
 }
