@@ -8,7 +8,7 @@ import ar.edu.untref.aydoo.entrada.VerificadorDeParametros;
 import ar.edu.untref.aydoo.salida.NoExisteArchivoException;
 import ar.edu.untref.aydoo.salida.NoExisteDirectorioException;
 
-public class Program {
+public class Presentacion {
 
 
 	public static final void main(String arg[]) throws IOException, NoExisteDirectorioException, NoExisteArchivoException,CaracteresInvalidosException {
