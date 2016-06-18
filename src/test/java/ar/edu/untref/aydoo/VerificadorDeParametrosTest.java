@@ -53,4 +53,13 @@ public class VerificadorDeParametrosTest {
 		
 		Assert.assertTrue(nuevoArchivo.exists());
 	}
+	@Test (expected = CaracteresInvalidosException.class)
+	public void seIngresanCaracteresInvalidosConAcentoEnI() throws IOException, NoExisteDirectorioException, NoExisteArchivoException, CaracteresInvalidosException{
+		VerificadorDeParametros verificoParametros = new VerificadorDeParametros();
+		String[]argumentos = {"--output=presentacíon1","mipresentacion.md"};
+		File nuevoArchivo = new File ("mipresentacion.md");
+		verificoParametros.lectorDeParametros(argumentos);
+		
+		Assert.assertTrue(nuevoArchivo.exists());
+	}
 }
