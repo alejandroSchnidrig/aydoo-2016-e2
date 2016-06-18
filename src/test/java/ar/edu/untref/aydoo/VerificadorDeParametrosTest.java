@@ -71,4 +71,13 @@ public class VerificadorDeParametrosTest {
 		
 		Assert.assertTrue(nuevoArchivo.exists());
 	}
+	@Test (expected = NoExisteArchivoException.class)
+	public void SeRecibeSolamenteUnParametro() throws IOException, NoExisteDirectorioException, NoExisteArchivoException, CaracteresInvalidosException{
+		VerificadorDeParametros verificoParametros = new VerificadorDeParametros();
+		String[]argumentos = {"--output=presentacion"};
+		File nuevoArchivo = new File ("mipresentacion.md");
+		verificoParametros.lectorDeParametros(argumentos);
+		
+		Assert.assertTrue(nuevoArchivo.exists());
+	}
 }
