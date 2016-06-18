@@ -77,6 +77,7 @@ public class FabricaDeElementosTest {
 		Elemento nuevoElementoSeccion = fabrica.crearElementos(contenidoSeccion);
 		
 		nuevoElemento.setSiguiente(nuevoElementoSeccion);
+		
 		Assert.assertEquals("<section>\n</section>\n", nuevoElemento.getSiguiente().transformarContenidoMD());
 	}
 	
@@ -92,8 +93,10 @@ public class FabricaDeElementosTest {
 		Elemento nuevoElementoSeccion = fabrica.crearElementos(contenido);
 		
 		nuevoElemento.setSiguiente(nuevoElementoSeccion);
+		
 		Assert.assertEquals("texto solo\n", nuevoElemento.getSiguiente().transformarContenidoMD());
 	}
+	
 	@Test
 	public void FabricaConstruyeTresElementoYVerificaElUltimo() {
 
@@ -112,5 +115,22 @@ public class FabricaDeElementosTest {
 		
 		Assert.assertEquals("<img src=\"imagen.png\"/>\n", nuevoElementoTitulo.getSiguiente().getSiguiente().transformarContenidoMD());
 	}
+	
+	@Test
+	public void FabricaConstruyeDosElementosYVerificaElUltimo() {
+
+		FabricaDeElementos fabrica = new FabricaDeElementos();
+
+		String contenidoTitulo = "# un titulo";
+		String contenidoLista = "*una Lista";
+		
+		Elemento nuevoElementoTitulo = fabrica.crearElementos(contenidoTitulo);
+		Elemento nuevoElementoLista = fabrica.crearElementos(contenidoLista);
+
+		nuevoElementoTitulo.setSiguiente(nuevoElementoLista);
+		
+		Assert.assertEquals("<ul>\n<li>una Lista</li>\n</ul>\n", nuevoElementoTitulo.getSiguiente().transformarContenidoMD());
+	}
+	
 
 }
