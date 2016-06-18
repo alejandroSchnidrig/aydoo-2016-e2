@@ -17,4 +17,11 @@ public class GeneradorDeArchivoTest {
 
 		Assert.assertTrue(generarArchivo.existeArchivo(ruta) == true);
 	}
+	@Test
+	public void VerificarQueElArchivoNoExiste() throws IOException{
+		GeneradorDeArchivo generarArchivo = new GeneradorDeArchivo();
+		String ruta =System.getProperty("user.dir" )+ ("/index.md");
+
+		Assert.assertTrue(generarArchivo.existeArchivo(ruta) == false);
+	}
 }
