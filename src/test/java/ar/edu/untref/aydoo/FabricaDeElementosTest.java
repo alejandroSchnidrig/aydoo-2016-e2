@@ -75,8 +75,24 @@ public class FabricaDeElementosTest {
 		
 		Elemento nuevoElemento = fabrica.crearElementos(contenido);
 		Elemento nuevoElementoSeccion = fabrica.crearElementos(contenidoSeccion);
+		
 		nuevoElemento.setSiguiente(nuevoElementoSeccion);
 		Assert.assertEquals("<section>\n</section>\n", nuevoElemento.getSiguiente().transformarContenidoMD());
+	}
+	
+	@Test
+	public void FabricaConstruyeConUnaSeccionYUnTextoPlano() {
+
+		FabricaDeElementos fabrica = new FabricaDeElementos();
+
+		String contenidoSeccion = "---";
+		String contenido = "texto solo";
+		
+		Elemento nuevoElemento = fabrica.crearElementos(contenidoSeccion);
+		Elemento nuevoElementoSeccion = fabrica.crearElementos(contenido);
+		
+		nuevoElemento.setSiguiente(nuevoElementoSeccion);
+		Assert.assertEquals("texto solo\n", nuevoElemento.getSiguiente().transformarContenidoMD());
 	}
 
 }
