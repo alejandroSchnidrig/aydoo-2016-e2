@@ -8,7 +8,7 @@ import ar.edu.untref.aydoo.modelado.CreadorDeArchivoMD;
 
 public class GeneradorSalida {
 
-	public void crearCarpetaYArchivo(String rutaArchivo, String tieneOutput) throws IOException, NoExisteDirectorioException, NoExisteArchivoException {
+	public void crearCarpetaConArchivo(String rutaArchivo, String tieneOutput) throws IOException, NoExisteDirectorioException, NoExisteArchivoException {
 		File existeArchivoEnRuta = new File(rutaArchivo);
 		File copiaDirectorio = new File(System.getProperty("user.dir"),"/plantilla/");
 		String directorio = "";

@@ -46,15 +46,15 @@ public class VerificadorDeParametros {
 			if(!validarParametrosIncorrectos(nuevo)|| !validarParametrosIncorrectos(proximo)){
 
 				if (nuevo.toLowerCase().equals("--mode=default")) {
-					nuevoLector.crearCarpetaYArchivo(proximo, "");
+					nuevoLector.crearCarpetaConArchivo(proximo, "");
 				} else if (nuevo.toLowerCase().equals("--mode=no-output")) {
 					nuevoLector.mostrarDatosPorPantalla(proximo);
 				} else {
 					if (!(nuevo.substring(0, 2).equals("--"))) {
-						nuevoLector.crearCarpetaYArchivo(nuevo, "");
+						nuevoLector.crearCarpetaConArchivo(nuevo, "");
 					} else if (nuevo.toLowerCase().substring(0, 9).equals("--output=")
 							&& !validarParametrosIncorrectos(nuevo)) {
-						nuevoLector.crearCarpetaYArchivo(proximo, nuevo.substring(9));
+						nuevoLector.crearCarpetaConArchivo(proximo, nuevo.substring(9));
 					}
 				}
 			}
