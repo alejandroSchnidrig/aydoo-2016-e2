@@ -26,7 +26,7 @@ public class GeneradorSalida {
 			copiarDirectorio.copiarArchivos(copiaDirectorio, generarDirectorio);
 			archivoMD.crearArchivoMD(rutaArchivo);
 			archivoHTML.organizarElementos(archivoMD.getListaDeElementos());
-			generarArchivo.generarArchivoEnDirectorio(directorio, archivoHTML.TransformarContenidosAHTML());
+			generarArchivo.generarArchivoEnDirectorio(directorio, archivoHTML.transformarContenidosAHTML());
 
 		}else{
 			throw new NoExisteArchivoException ();
@@ -39,6 +39,6 @@ public class GeneradorSalida {
 		CreadorDeArchivoHTML archivoHTML = new CreadorDeArchivoHTML();
 		lecturaDeArchivo.crearArchivoMD(rutaArchivo);
 		archivoHTML.organizarElementos(lecturaDeArchivo.getListaDeElementos());
-		System.out.println(archivoHTML.TransformarContenidosAHTML());
+		System.out.println(archivoHTML.transformarContenidosAHTML());
 	}	
 }

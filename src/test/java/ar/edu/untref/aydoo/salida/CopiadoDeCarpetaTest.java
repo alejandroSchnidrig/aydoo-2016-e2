@@ -9,8 +9,6 @@ import org.junit.Test;
 import ar.edu.untref.aydoo.salida.CopiadoDeCarpeta;
 import ar.edu.untref.aydoo.salida.NoExisteDirectorioException;
 
-
-
 public class CopiadoDeCarpetaTest {
 
 	@Test

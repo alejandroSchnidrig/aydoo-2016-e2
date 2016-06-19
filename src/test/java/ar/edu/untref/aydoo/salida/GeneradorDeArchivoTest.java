@@ -16,10 +16,11 @@ public class GeneradorDeArchivoTest {
 		String ruta =System.getProperty("user.dir" )+ ("/README.md");
 		CreadorDeArchivoHTML archivoHTML = new CreadorDeArchivoHTML();
 
-		generarArchivo.generarArchivoEnDirectorio("archivosDeEjemplo", archivoHTML.TransformarContenidosAHTML());
+		generarArchivo.generarArchivoEnDirectorio("archivosDeEjemplo", archivoHTML.transformarContenidosAHTML());
 
 		Assert.assertTrue(generarArchivo.existeArchivo(ruta) == true);
 	}
+	
 	@Test
 	public void VerificarQueElArchivoNoExiste() throws IOException{
 		GeneradorDeArchivo generarArchivo = new GeneradorDeArchivo();

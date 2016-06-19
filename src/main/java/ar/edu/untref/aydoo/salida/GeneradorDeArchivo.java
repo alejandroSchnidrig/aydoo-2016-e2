@@ -13,22 +13,22 @@ public class GeneradorDeArchivo {
 		EscrituraDeArchivo modificarArchivo = new EscrituraDeArchivo();
 
 		List<String> lineas = new ArrayList<String>();
-	    String unaLinea = null;
-	    String directorio = (System.getProperty("user.dir")+"/"+ rutaArchivo+"/index.html");
+		String unaLinea = null;
+		String directorio = (System.getProperty("user.dir")+"/"+ rutaArchivo+"/index.html");
 		File directorioArchivo = new File(directorio);
-        FileReader fr = new FileReader(directorioArchivo);
-        BufferedReader br = new BufferedReader(fr);
+		FileReader lectorDeArchivo = new FileReader(directorioArchivo);
+		BufferedReader lectorDeLineasDeArchivo = new BufferedReader(lectorDeArchivo);
 
-        while ((unaLinea = br.readLine()) != null) {
-            if (unaLinea.contains(("[este-es-el-texto-a-reemplazar]"))){
-            	unaLinea = unaLinea.replace("[este-es-el-texto-a-reemplazar]", nuevaCadena);
-            }
-            lineas.add(unaLinea+"\n");
-        }
-        fr.close();
-        br.close();
+		while ((unaLinea = lectorDeLineasDeArchivo.readLine()) != null) {
+			if (unaLinea.contains(("[este-es-el-texto-a-reemplazar]"))){
+				unaLinea = unaLinea.replace("[este-es-el-texto-a-reemplazar]", nuevaCadena);
+			}
+			lineas.add(unaLinea+"\n");
+		}
+		lectorDeArchivo.close();
+		lectorDeLineasDeArchivo.close();
 
-        modificarArchivo.grabarArchivoEnDirectorio(directorio, lineas);
+		modificarArchivo.grabarArchivoEnDirectorio(directorio, lineas);
 	}
 
 	public boolean existeArchivo(String ruta){

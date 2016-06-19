@@ -43,7 +43,6 @@ public class CopiadoDeCarpeta {
 				archivoSalida.close();
 			}
 		}else{
-
 			throw new NoExisteDirectorioException();
 
 		}

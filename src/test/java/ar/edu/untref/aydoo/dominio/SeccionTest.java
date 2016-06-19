@@ -17,14 +17,14 @@ public class SeccionTest {
 
 		Seccion unaSeccion = new Seccion();
 		Elemento unTitulo = new Titulo();
-		
+
 		unTitulo.setContenido("# El señor de los anillos");
 
 		unaSeccion.agregarElemento(unTitulo);
 
 		Assert.assertEquals("<section>\n<h1>El señor de los anillos</h1>\n</section>\n", unaSeccion.transformarContenidoMD());
 	}
-	
+
 	@Test
 	public void SeccionTransformaUnSubTituloCorrectamente() {
 
@@ -36,7 +36,7 @@ public class SeccionTest {
 
 		Assert.assertEquals("<section>\n<h2>El señor de los anillos</h2>\n</section>\n", unaSeccion.transformarContenidoMD());
 	}
-	
+
 	@Test
 	public void SeccionTransformaUnaImagenCorrectamente() {
 
@@ -48,7 +48,7 @@ public class SeccionTest {
 
 		Assert.assertEquals("<section>\n<img src=\"imagen.png\"/>\n</section>\n", unaSeccion.transformarContenidoMD());
 	}
-	
+
 	@Test
 	public void SeccionTransformaUnTextoPlanoCorrectamente() {
 
@@ -67,7 +67,7 @@ public class SeccionTest {
 		Seccion otraSeccion = new Seccion();
 		Elemento unTitulo = new Titulo();
 		Elemento SubTitulo = new SubTitulo();
-		
+
 		unTitulo.setContenido("# El Hobbit");
 		SubTitulo.setContenido("## 4000 años antes... ");
 
@@ -87,7 +87,7 @@ public class SeccionTest {
 		Elemento SubTitulo = new SubTitulo();
 		Elemento unaImagen = new Imagen();
 		Elemento otroTitulo = new Titulo();
-		
+
 		unTitulo.setContenido("# El Hobbit");
 		SubTitulo.setContenido("## 4000 años antes... ");
 		unaImagen.setContenido("i:foto.png");
@@ -119,18 +119,18 @@ public class SeccionTest {
 		Assert.assertEquals("---", seccion.getContenido());
 
 	}
-	
+
 	@Test
 	public void SeccionQueContieneOtraSeccionSeTransformaCorrectamente(){
 		Seccion seccion = new Seccion();
 		Seccion otraSeccion = new Seccion();
 		Elemento unTitulo = new Titulo();
-		
+
 		unTitulo.setContenido("# El Hobbit");
-		
+
 		otraSeccion.agregarElemento(unTitulo);
 		seccion.agregarElemento(otraSeccion);
-		
+
 		Assert.assertEquals("<section>\n<section>\n<h1>El Hobbit</h1>\n</section>\n</section>\n", seccion.transformarContenidoMD());
 	}
 }
