@@ -18,13 +18,15 @@ public class VerificadorDeParametros {
 	}
 
 	public void lectorDeParametros(String argumentos[])
-			throws IOException, NoExisteDirectorioException, NoExisteArchivoException, CaracteresInvalidosException {
+			throws IOException, NoExisteDirectorioException, NoExisteArchivoException, CaracteresInvalidosException, NoSeIngresaronParametrosException {
 		GeneradorSalida nuevoLector = new GeneradorSalida();
+		if(argumentos.length == 0){
+			throw new NoSeIngresaronParametrosException();
+		}else{
+			for (int contador = 0; contador < argumentos.length; contador++) {
 
-		for (int contador = 0; contador < argumentos.length; contador++) {
-
-			this.nuevaLista.add(argumentos[contador]);
-
+				this.nuevaLista.add(argumentos[contador]);
+			}
 		}
 		Iterator<String> iterador = this.nuevaLista.iterator();
 		String nuevo = "";

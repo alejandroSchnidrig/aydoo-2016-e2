@@ -12,11 +12,16 @@ public class GeneradorSalida {
 		File existeArchivoEnRuta = new File(rutaArchivo);
 		File copiaDirectorio = new File(System.getProperty("user.dir"),"/plantilla/");
 		String directorio = "";
-		if(tieneOutput.equals("")){
-			directorio = rutaArchivo.substring(0, rutaArchivo.lastIndexOf('.'));
+		if (rutaArchivo.contains(".")){
+			if(tieneOutput.equals("")){
+				directorio = rutaArchivo.substring(0, rutaArchivo.lastIndexOf('.'));
+			}else{
+				directorio = tieneOutput;
+			}
 		}else{
-			directorio = tieneOutput;
+			throw new NoExisteArchivoException();
 		}
+			
 		File generarDirectorio = new File(directorio);
 		CopiadoDeCarpeta copiarDirectorio = new CopiadoDeCarpeta();
 		GeneradorDeArchivo generarArchivo = new GeneradorDeArchivo();
