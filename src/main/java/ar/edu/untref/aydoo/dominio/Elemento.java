@@ -17,7 +17,7 @@ public abstract class Elemento {
 	}
 
 	public abstract String transformarContenidoMD();
-	
+
 	public abstract Elemento crearElemento(String contenido);
 
 	public abstract void agregarElemento(Elemento elemento);
@@ -27,4 +27,3 @@ public abstract class Elemento {
 	public abstract Elemento getSiguiente();
 
 }
-

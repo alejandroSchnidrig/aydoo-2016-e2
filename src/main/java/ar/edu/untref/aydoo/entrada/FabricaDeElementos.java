@@ -30,7 +30,7 @@ public class FabricaDeElementos {
 		unaLista.setSiguiente(textoPlano);
 
 		Elemento elemento = this.siguiente.crearElemento(contenido);
-		
+
 		return elemento;
 	}
 

@@ -53,8 +53,9 @@ public class CreadorDeArchivoHTMLTest {
 
 		organizador.organizarElementos(elementos);
 
-		Assert.assertEquals("<section>\n<h1>slide1 :titulo 1</h1>\n</section>\n<section>\n<h2>slide2: titulo 2</h2>"
-				+ "\n</section>\n<section>\nslide 3\n<h1>titulo 1</h1>\n<h2>titulo 2</h2>\n" + "</section>\n",
+		Assert.assertEquals(
+				"<section>\n<h1>slide1 :titulo 1</h1>\n</section>\n<section>\n<h2>slide2: titulo 2</h2>"
+						+ "\n</section>\n<section>\nslide 3\n<h1>titulo 1</h1>\n<h2>titulo 2</h2>\n" + "</section>\n",
 				organizador.transformarContenidosAHTML());
 
 	}
@@ -84,7 +85,6 @@ public class CreadorDeArchivoHTMLTest {
 		lista5.setContenido("*quinto elemento");
 		unTitulo2.setContenido("# final");
 
-
 		elementos.add(lista);
 		elementos.add(lista2);
 		elementos.add(unTitulo);
@@ -103,7 +103,7 @@ public class CreadorDeArchivoHTMLTest {
 	}
 
 	@Test
-	public void ImprimeUnaListaYSeccionCorrectamente(){
+	public void ImprimeUnaListaYSeccionCorrectamente() {
 
 		CreadorDeArchivoHTML organizador = new CreadorDeArchivoHTML();
 
@@ -133,15 +133,15 @@ public class CreadorDeArchivoHTMLTest {
 		elementos.add(texto);
 		elementos.add(lista3);
 
-
 		organizador.organizarElementos(elementos);
 
 		Assert.assertEquals("<h1>Titulo</h1>\n<h2>Subtitulo</h2>\n<ul>\n<li>primer elemento</li>\n"
 				+ "<li>segundo elemento</li>\n</ul>\n<section>\nslide 3\n<ul>"
 				+ "\n<li>tercer elemento</li>\n</ul>\n</section>\n", organizador.transformarContenidosAHTML());
 	}
+
 	@Test
-	public void ImprimeUnaSeccionConTituloEImagenCorrectamente(){
+	public void ImprimeUnaSeccionConTituloEImagenCorrectamente() {
 
 		CreadorDeArchivoHTML organizador = new CreadorDeArchivoHTML();
 
@@ -161,10 +161,12 @@ public class CreadorDeArchivoHTMLTest {
 
 		organizador.organizarElementos(elementos);
 
-		Assert.assertEquals("<section>\n<h1>Titulo</h1>\n<img src=\" mifoto.png\"/>\n</section>\n", organizador.transformarContenidosAHTML());
+		Assert.assertEquals("<section>\n<h1>Titulo</h1>\n<img src=\" mifoto.png\"/>\n</section>\n",
+				organizador.transformarContenidosAHTML());
 	}
+
 	@Test
-	public void ImprimeListaConTextoPlanoEImagenesCorrectamente(){
+	public void ImprimeListaConTextoPlanoEImagenesCorrectamente() {
 
 		CreadorDeArchivoHTML organizador = new CreadorDeArchivoHTML();
 
@@ -184,11 +186,12 @@ public class CreadorDeArchivoHTMLTest {
 
 		organizador.organizarElementos(elementos);
 
-		Assert.assertEquals("<ul>\n<li>Cosas Importantes</li>\n</ul>\nMi Foto\n<img src=\" mifoto.png\"/>\n", organizador.transformarContenidosAHTML());
+		Assert.assertEquals("<ul>\n<li>Cosas Importantes</li>\n</ul>\nMi Foto\n<img src=\" mifoto.png\"/>\n",
+				organizador.transformarContenidosAHTML());
 	}
 
 	@Test
-	public void creaArchivoHmtlDeListasySeccionesCorrectamente(){
+	public void creaArchivoHmtlDeListasySeccionesCorrectamente() {
 
 		CreadorDeArchivoHTML organizador = new CreadorDeArchivoHTML();
 
@@ -229,9 +232,11 @@ public class CreadorDeArchivoHTMLTest {
 
 		organizador.organizarElementos(elementos);
 
-		Assert.assertEquals("<ul>\n<li>lista 1</li>\n</ul>\n<section>\n<ul>\n<li>lista 2</li>\n</ul>\n</section>\n"
-				+ "<section>\n<ul>\n<li>lista 3</li>\n<li>lista 4</li>\n</ul>\n</section>\n"
-				+ "<section>\n<ul>\n<li>lista 5</li>\n<li>lista 6</li>\n<li>lista 7</li>\n</ul>\n</section>\n", organizador.transformarContenidosAHTML());
+		Assert.assertEquals(
+				"<ul>\n<li>lista 1</li>\n</ul>\n<section>\n<ul>\n<li>lista 2</li>\n</ul>\n</section>\n"
+						+ "<section>\n<ul>\n<li>lista 3</li>\n<li>lista 4</li>\n</ul>\n</section>\n"
+						+ "<section>\n<ul>\n<li>lista 5</li>\n<li>lista 6</li>\n<li>lista 7</li>\n</ul>\n</section>\n",
+				organizador.transformarContenidosAHTML());
 
 	}
 

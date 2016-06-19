@@ -12,22 +12,22 @@ import ar.edu.untref.aydoo.entrada.FabricaDeElementos;
 
 public class CreadorDeArchivoMD {
 
-	List<Elemento> elementos;
-	FabricaDeElementos fabrica;
+	public List<Elemento> elementos;
+	public FabricaDeElementos fabrica;
 
-	public CreadorDeArchivoMD(){
+	public CreadorDeArchivoMD() {
 		this.elementos = new LinkedList<Elemento>();
 		fabrica = new FabricaDeElementos();
 	}
 
-	public void crearArchivoMD(String ruta) throws IOException{
+	public void crearArchivoMD(String ruta) throws IOException {
 
 		String contenido;
 		File archivo = new File(ruta);
 		FileReader f = new FileReader(archivo);
 		BufferedReader b = new BufferedReader(f);
 
-		while((contenido = b.readLine())!=null) {
+		while ((contenido = b.readLine()) != null) {
 			Elemento nuevoElemento = fabrica.crearElementos(contenido);
 			this.elementos.add(nuevoElemento);
 		}
@@ -35,15 +35,15 @@ public class CreadorDeArchivoMD {
 
 	}
 
-	public String getContenido(int posicion){
+	public String getContenido(int posicion) {
 		return this.elementos.get(posicion).getContenido();
 	}
 
-	public Elemento getElemento(int posicion){
+	public Elemento getElemento(int posicion) {
 		return this.elementos.get(posicion);
 	}
 
-	public List<Elemento> getListaDeElementos(){
+	public List<Elemento> getListaDeElementos() {
 		return this.elementos;
 	}
 

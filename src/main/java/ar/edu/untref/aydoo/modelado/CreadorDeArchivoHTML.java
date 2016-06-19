@@ -20,33 +20,33 @@ public class CreadorDeArchivoHTML {
 		this.elementos = this.organizaSecciones(unaLista);
 	}
 
-	private List<Elemento> organizaListas(List<Elemento> elementos){
+	private List<Elemento> organizaListas(List<Elemento> elementos) {
 
 		List<Elemento> listaAuxiliar = new LinkedList<Elemento>();
 		Elemento lista = null;
 		boolean existeLista = false;
 
 		Iterator<Elemento> it = elementos.iterator();
-		while(it.hasNext()){
+		while (it.hasNext()) {
 			Elemento actual = it.next();
 
-			if(actual.getContenido().contains("*") && existeLista == false){
+			if (actual.getContenido().contains("*") && existeLista == false) {
 				lista = actual;
 				existeLista = true;
-			}else if (actual.getContenido().contains("*") && existeLista == true){
+			} else if (actual.getContenido().contains("*") && existeLista == true) {
 				lista.agregarElemento(actual);
 			}
 
-			if(!actual.getContenido().contains("*") && existeLista == true){
+			if (!actual.getContenido().contains("*") && existeLista == true) {
 				listaAuxiliar.add(lista);
 				listaAuxiliar.add(actual);
 				existeLista = false;
-			}else if(!actual.getContenido().contains("*") && existeLista == false){
+			} else if (!actual.getContenido().contains("*") && existeLista == false) {
 				listaAuxiliar.add(actual);
 			}
 		}
 
-		if(existeLista == true){
+		if (existeLista == true) {
 			listaAuxiliar.add(lista);
 		}
 
@@ -54,33 +54,32 @@ public class CreadorDeArchivoHTML {
 
 	}
 
-	private List<Elemento> organizaSecciones(List<Elemento> elementos){
+	private List<Elemento> organizaSecciones(List<Elemento> elementos) {
 
 		List<Elemento> listaAuxiliar = new LinkedList<Elemento>();
 		Elemento seccion = null;
 		boolean existeSeccion = false;
 
-
 		Iterator<Elemento> it = elementos.iterator();
-		while(it.hasNext()){
+		while (it.hasNext()) {
 			Elemento actual = it.next();
 
-			if(actual.getContenido().contains("---") && existeSeccion == false){
+			if (actual.getContenido().contains("---") && existeSeccion == false) {
 				seccion = actual;
 				existeSeccion = true;
-			}else if (actual.getContenido().contains("---") && existeSeccion == true){
+			} else if (actual.getContenido().contains("---") && existeSeccion == true) {
 				listaAuxiliar.add(seccion);
 				seccion = actual;
 			}
 
-			if(!actual.getContenido().contains("---") && existeSeccion == true){
+			if (!actual.getContenido().contains("---") && existeSeccion == true) {
 				seccion.agregarElemento(actual);
-			}else if(!actual.getContenido().contains("---") && existeSeccion == false){
+			} else if (!actual.getContenido().contains("---") && existeSeccion == false) {
 				listaAuxiliar.add(actual);
 			}
 		}
 
-		if(existeSeccion == true){
+		if (existeSeccion == true) {
 			listaAuxiliar.add(seccion);
 		}
 
