@@ -11,20 +11,20 @@ import ar.edu.untref.aydoo.salida.GeneradorDeArchivo;
 public class GeneradorDeArchivoTest {
 
 	@Test
-	public void VerificaLaGeneracionDelArchivoConUnElemento() throws IOException{
+	public void VerificaLaGeneracionDelArchivoConUnElemento() throws IOException {
 		GeneradorDeArchivo generarArchivo = new GeneradorDeArchivo();
-		String ruta =System.getProperty("user.dir" )+ ("/README.md");
+		String ruta = System.getProperty("user.dir") + ("/README.md");
 		CreadorDeArchivoHTML archivoHTML = new CreadorDeArchivoHTML();
 
 		generarArchivo.generarArchivoEnDirectorio("archivosDeEjemplo", archivoHTML.transformarContenidosAHTML());
 
 		Assert.assertTrue(generarArchivo.existeArchivo(ruta) == true);
 	}
-	
+
 	@Test
-	public void VerificarQueElArchivoNoExiste() throws IOException{
+	public void VerificarQueElArchivoNoExiste() throws IOException {
 		GeneradorDeArchivo generarArchivo = new GeneradorDeArchivo();
-		String ruta =System.getProperty("user.dir" )+ ("/index.md");
+		String ruta = System.getProperty("user.dir") + ("/index.md");
 
 		Assert.assertTrue(generarArchivo.existeArchivo(ruta) == false);
 	}

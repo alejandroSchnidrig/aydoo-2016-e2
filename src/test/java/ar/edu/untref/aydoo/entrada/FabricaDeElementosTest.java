@@ -116,7 +116,8 @@ public class FabricaDeElementosTest {
 		nuevoElementoTitulo.setSiguiente(nuevoElementoSubtitulo);
 		nuevoElementoSubtitulo.setSiguiente(nuevoElementoImagen);
 
-		Assert.assertEquals("<img src=\"imagen.png\"/>\n", nuevoElementoTitulo.getSiguiente().getSiguiente().transformarContenidoMD());
+		Assert.assertEquals("<img src=\"imagen.png\"/>\n",
+				nuevoElementoTitulo.getSiguiente().getSiguiente().transformarContenidoMD());
 	}
 
 	@Test
@@ -132,7 +133,8 @@ public class FabricaDeElementosTest {
 
 		nuevoElementoTitulo.setSiguiente(nuevoElementoLista);
 
-		Assert.assertEquals("<ul>\n<li>una Lista</li>\n</ul>\n", nuevoElementoTitulo.getSiguiente().transformarContenidoMD());
+		Assert.assertEquals("<ul>\n<li>una Lista</li>\n</ul>\n",
+				nuevoElementoTitulo.getSiguiente().transformarContenidoMD());
 	}
 
 }

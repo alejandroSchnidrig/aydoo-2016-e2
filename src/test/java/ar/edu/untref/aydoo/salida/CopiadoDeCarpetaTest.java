@@ -12,10 +12,10 @@ import ar.edu.untref.aydoo.salida.NoExisteDirectorioException;
 public class CopiadoDeCarpetaTest {
 
 	@Test
-	public void seCopiaCarpetaDelDirectorioCorrectamente() throws IOException, NoExisteDirectorioException{
+	public void seCopiaCarpetaDelDirectorioCorrectamente() throws IOException, NoExisteDirectorioException {
 
 		String rutaOrigen = System.getProperty("user.dir");
-		String rutaDestino = (rutaOrigen+"/carpetaPruebaCopia");
+		String rutaDestino = (rutaOrigen + "/carpetaPruebaCopia");
 
 		File carpetaOrigen = new File(rutaOrigen);
 		File carpetaDestino = new File(rutaDestino);
@@ -26,11 +26,11 @@ public class CopiadoDeCarpetaTest {
 
 	}
 
-	@Test (expected = NoExisteDirectorioException.class)
-	public void carpetaInexistenteParaCopiar() throws IOException, NoExisteDirectorioException{
+	@Test(expected = NoExisteDirectorioException.class)
+	public void carpetaInexistenteParaCopiar() throws IOException, NoExisteDirectorioException {
 
 		String rutaOrigen = "DirectorioIncorrecto";
-		String rutaDestino = (rutaOrigen+"/pruebaCarpetaCopia");
+		String rutaDestino = (rutaOrigen + "/pruebaCarpetaCopia");
 
 		File carpetaOrigen = new File(rutaOrigen);
 		File carpetaDestino = new File(rutaDestino);

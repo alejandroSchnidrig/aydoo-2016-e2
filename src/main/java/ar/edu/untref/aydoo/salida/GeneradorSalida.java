@@ -8,33 +8,34 @@ import ar.edu.untref.aydoo.modelado.CreadorDeArchivoMD;
 
 public class GeneradorSalida {
 
-	public void crearCarpetaConArchivo(String rutaArchivo, String tieneOutput) throws IOException, NoExisteDirectorioException, NoExisteArchivoException {
+	public void crearCarpetaConArchivo(String rutaArchivo, String tieneOutput)
+			throws IOException, NoExisteDirectorioException, NoExisteArchivoException {
 		File existeArchivoEnRuta = new File(rutaArchivo);
-		File copiaDirectorio = new File(System.getProperty("user.dir"),"/plantilla/");
+		File copiaDirectorio = new File(System.getProperty("user.dir"), "/plantilla/");
 		String directorio = "";
-		if (rutaArchivo.contains(".")){
-			if(tieneOutput.equals("")){
+		if (rutaArchivo.contains(".")) {
+			if (tieneOutput.equals("")) {
 				directorio = rutaArchivo.substring(0, rutaArchivo.lastIndexOf('.'));
-			}else{
+			} else {
 				directorio = tieneOutput;
 			}
-		}else{
+		} else {
 			throw new NoExisteArchivoException();
 		}
-			
+
 		File generarDirectorio = new File(directorio);
 		CopiadoDeCarpeta copiarDirectorio = new CopiadoDeCarpeta();
 		GeneradorDeArchivo generarArchivo = new GeneradorDeArchivo();
 		CreadorDeArchivoMD archivoMD = new CreadorDeArchivoMD();
 		CreadorDeArchivoHTML archivoHTML = new CreadorDeArchivoHTML();
-		if(existeArchivoEnRuta.exists()){
+		if (existeArchivoEnRuta.exists()) {
 			copiarDirectorio.copiarArchivos(copiaDirectorio, generarDirectorio);
 			archivoMD.crearArchivoMD(rutaArchivo);
 			archivoHTML.organizarElementos(archivoMD.getListaDeElementos());
 			generarArchivo.generarArchivoEnDirectorio(directorio, archivoHTML.transformarContenidosAHTML());
 
-		}else{
-			throw new NoExisteArchivoException ();
+		} else {
+			throw new NoExisteArchivoException();
 		}
 
 	}
@@ -45,5 +46,5 @@ public class GeneradorSalida {
 		lecturaDeArchivo.crearArchivoMD(rutaArchivo);
 		archivoHTML.organizarElementos(lecturaDeArchivo.getListaDeElementos());
 		System.out.println(archivoHTML.transformarContenidosAHTML());
-	}	
+	}
 }

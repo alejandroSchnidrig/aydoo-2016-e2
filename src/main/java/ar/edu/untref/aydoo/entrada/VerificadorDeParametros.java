@@ -17,21 +17,25 @@ public class VerificadorDeParametros {
 		nuevaLista = new LinkedList<String>();
 	}
 
-	public void lectorDeParametros(String argumentos[])
-			throws IOException, NoExisteDirectorioException, NoExisteArchivoException, CaracteresInvalidosException, NoSeIngresaronParametrosException {
+	public void lectorDeParametros(String argumentos[]) throws IOException, NoExisteDirectorioException,
+			NoExisteArchivoException, CaracteresInvalidosException, NoSeIngresaronParametrosException, ParametroInvalidoException {
+		
 		GeneradorSalida nuevoLector = new GeneradorSalida();
-		if(argumentos.length == 0){
+		
+		if (argumentos.length == 0) {
 			throw new NoSeIngresaronParametrosException();
-		}else{
+		} else {
 			for (int contador = 0; contador < argumentos.length; contador++) {
 
 				this.nuevaLista.add(argumentos[contador]);
 			}
 		}
+		
 		Iterator<String> iterador = this.nuevaLista.iterator();
 		String nuevo = "";
 		String proximo = "";
 		String auxiliar = "";
+		
 		while (iterador.hasNext()) {
 			nuevo = iterador.next();
 
@@ -45,7 +49,7 @@ public class VerificadorDeParametros {
 				proximo = auxiliar;
 			}
 
-			if(!validarParametrosIncorrectos(nuevo)|| !validarParametrosIncorrectos(proximo)){
+			if (!validarParametrosIncorrectos(nuevo) || !validarParametrosIncorrectos(proximo)) {
 
 				if (nuevo.toLowerCase().equals("--mode=default")) {
 					nuevoLector.crearCarpetaConArchivo(proximo, "");
@@ -57,6 +61,8 @@ public class VerificadorDeParametros {
 					} else if (nuevo.toLowerCase().substring(0, 9).equals("--output=")
 							&& !validarParametrosIncorrectos(nuevo)) {
 						nuevoLector.crearCarpetaConArchivo(proximo, nuevo.substring(9));
+					}else{
+						throw new ParametroInvalidoException();
 					}
 				}
 			}

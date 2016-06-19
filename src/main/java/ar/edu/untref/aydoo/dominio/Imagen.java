@@ -3,8 +3,8 @@ package ar.edu.untref.aydoo.dominio;
 public class Imagen extends Elemento {
 
 	private Elemento siguiente;
-	
-	public Imagen(){
+
+	public Imagen() {
 		this.contenido = "";
 	}
 

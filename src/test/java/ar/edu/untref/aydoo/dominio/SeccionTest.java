@@ -22,7 +22,8 @@ public class SeccionTest {
 
 		unaSeccion.agregarElemento(unTitulo);
 
-		Assert.assertEquals("<section>\n<h1>El señor de los anillos</h1>\n</section>\n", unaSeccion.transformarContenidoMD());
+		Assert.assertEquals("<section>\n<h1>El señor de los anillos</h1>\n</section>\n",
+				unaSeccion.transformarContenidoMD());
 	}
 
 	@Test
@@ -34,7 +35,8 @@ public class SeccionTest {
 
 		unaSeccion.agregarElemento(unSubTitulo);
 
-		Assert.assertEquals("<section>\n<h2>El señor de los anillos</h2>\n</section>\n", unaSeccion.transformarContenidoMD());
+		Assert.assertEquals("<section>\n<h2>El señor de los anillos</h2>\n</section>\n",
+				unaSeccion.transformarContenidoMD());
 	}
 
 	@Test
@@ -121,7 +123,7 @@ public class SeccionTest {
 	}
 
 	@Test
-	public void SeccionQueContieneOtraSeccionSeTransformaCorrectamente(){
+	public void SeccionQueContieneOtraSeccionSeTransformaCorrectamente() {
 		Seccion seccion = new Seccion();
 		Seccion otraSeccion = new Seccion();
 		Elemento unTitulo = new Titulo();
@@ -131,6 +133,32 @@ public class SeccionTest {
 		otraSeccion.agregarElemento(unTitulo);
 		seccion.agregarElemento(otraSeccion);
 
-		Assert.assertEquals("<section>\n<section>\n<h1>El Hobbit</h1>\n</section>\n</section>\n", seccion.transformarContenidoMD());
+		Assert.assertEquals("<section>\n<section>\n<h1>El Hobbit</h1>\n</section>\n</section>\n",
+				seccion.transformarContenidoMD());
+	}
+
+	@Test
+	public void SeccionQueContieneListaSeTransformaCorrectamente() {
+		Seccion seccion = new Seccion();
+		Lista unaLista = new Lista();
+
+		seccion.agregarElemento(unaLista);
+
+		Assert.assertEquals("<section>\n<ul>\n<li></li>\n</ul>\n</section>\n", seccion.transformarContenidoMD());
+	}
+	
+	@Test
+	public void SeccionQueContieneListaConElementosSeTransformaCorrectamente() {
+		Seccion seccion = new Seccion();
+		Lista unaLista = new Lista();
+		Lista unaLista2 = new Lista();
+
+		unaLista.setContenido("lista 1");
+		unaLista2.setContenido("lista 2");
+		
+		unaLista.agregarElemento(unaLista2);
+		seccion.agregarElemento(unaLista);
+
+		Assert.assertEquals("<section>\n<ul>\n<li>lista 1</li>\n<li>lista 2</li>\n</ul>\n</section>\n", seccion.transformarContenidoMD());
 	}
 }

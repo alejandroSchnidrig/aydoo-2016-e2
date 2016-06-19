@@ -20,10 +20,10 @@ public class CreadorDeArchivoMDTest {
 		Assert.assertEquals("i:estoEsUnaImagen.png", creador.getContenido(2));
 		Assert.assertEquals("# esto es otro titulo", creador.getContenido(3));
 		Assert.assertEquals("textoplano", creador.getContenido(4));
-		
+
 		Assert.assertEquals(5, creador.getListaDeElementos().size());
 	}
-	
+
 	@Test
 	public void seVerificaLaCantidadDeElementosDeLista() throws IOException {
 
@@ -33,12 +33,12 @@ public class CreadorDeArchivoMDTest {
 
 		Assert.assertEquals(5, lector.getListaDeElementos().size());
 	}
-	
+
 	@Test
 	public void CreadorDeArchivoMDCreaTituloCorrectamente() throws IOException {
 
 		CreadorDeArchivoMD creador = new CreadorDeArchivoMD();
-		
+
 		String ruta = System.getProperty("user.dir");
 		creador.crearArchivoMD(ruta + "/archivosDeEjemplo/textoAProcesar.md");
 
@@ -49,63 +49,62 @@ public class CreadorDeArchivoMDTest {
 	public void CreadorDeArchivoMDCreaSubTituloCorrectamente() throws IOException {
 
 		CreadorDeArchivoMD creador = new CreadorDeArchivoMD();
-		
+
 		String ruta = System.getProperty("user.dir");
 		creador.crearArchivoMD(ruta + "/archivosDeEjemplo/textoAProcesar.md");
 
 		Assert.assertEquals("<h2>esto es un sub-titulo</h2>\n", creador.getElemento(1).transformarContenidoMD());
 	}
-	
+
 	@Test
 	public void CreadorDeArchivoMDCreaImagenCorrectamente() throws IOException {
 
 		CreadorDeArchivoMD creador = new CreadorDeArchivoMD();
-		
+
 		String ruta = System.getProperty("user.dir");
 		creador.crearArchivoMD(ruta + "/archivosDeEjemplo/textoAProcesar.md");
 
 		Assert.assertEquals("<img src=\"estoEsUnaImagen.png\"/>\n", creador.getElemento(2).transformarContenidoMD());
 	}
-	
+
 	@Test
 	public void CreadorDeArchivoMDCreaSeccionCorrectamente() throws IOException {
 
 		CreadorDeArchivoMD creador = new CreadorDeArchivoMD();
-		
+
 		String ruta = System.getProperty("user.dir");
 		creador.crearArchivoMD(ruta + "/archivosDeEjemplo/seccion.md");
 
 		Assert.assertEquals("<section>\n</section>\n", creador.getElemento(0).transformarContenidoMD());
 	}
-	
+
 	@Test
 	public void CreadorDeArchivoMDCreaListaCorrectamente() throws IOException {
 
 		CreadorDeArchivoMD creador = new CreadorDeArchivoMD();
-		
+
 		String ruta = System.getProperty("user.dir");
 		creador.crearArchivoMD(ruta + "/archivosDeEjemplo/lista.md");
 
 		Assert.assertEquals("<ul>\n<li>Una lista</li>\n</ul>\n", creador.getElemento(0).transformarContenidoMD());
 	}
-	
+
 	@Test
 	public void CreadorDeArchivoMDCreaTextoPlanoCorrectamente() throws IOException {
 
 		CreadorDeArchivoMD creador = new CreadorDeArchivoMD();
-		
+
 		String ruta = System.getProperty("user.dir");
 		creador.crearArchivoMD(ruta + "/archivosDeEjemplo/textoAProcesar.md");
 
 		Assert.assertEquals("textoplano\n", creador.getElemento(4).transformarContenidoMD());
 	}
-	
 
 	@Test
 	public void CreadorDeArchivoMDCreaSeisElementosCorrectamente() throws IOException {
 
 		CreadorDeArchivoMD creador = new CreadorDeArchivoMD();
-		
+
 		String ruta = System.getProperty("user.dir");
 		creador.crearArchivoMD(ruta + "/archivosDeEjemplo/SeisElementos.md");
 
