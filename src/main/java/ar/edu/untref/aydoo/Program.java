@@ -1,38 +1,20 @@
 package ar.edu.untref.aydoo;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
+
+import ar.edu.untref.aydoo.entrada.CaracteresInvalidosException;
+import ar.edu.untref.aydoo.entrada.NoSeIngresaronParametrosException;
+import ar.edu.untref.aydoo.entrada.ParametroInvalidoException;
+import ar.edu.untref.aydoo.entrada.VerificadorDeParametros;
+import ar.edu.untref.aydoo.salida.NoExisteArchivoException;
+import ar.edu.untref.aydoo.salida.NoExisteDirectorioException;
 
 public class Program {
 
-	private static BufferedWriter bw;
-	public static final void main(String arg[]) throws IOException{
-		
-		boolean contieneCaracteresEspeciales=false;
-		for (int contadorParametros=1;contadorParametros<arg.length || 
-				contieneCaracteresEspeciales == true;contadorParametros++){
-			switch (arg[contadorParametros].toLowerCase()){
-			case "--mode=default":
-				escribirEnCarpeta(true);
-				break;
-			case "--mode=no-output":
-				escribirEnCarpeta(false);
-				break;
-			default: 	
-				if(arg[contadorParametros].matches("ñÑ áéíóú/;:,")){
-					contieneCaracteresEspeciales=true;
-				}else{
-				      bw = new BufferedWriter(new FileWriter("index.html"));
-				      bw.write("Se genera el index.html");
-				}
-				break;
-			}
-		}
+	public static final void main(String arg[]) throws IOException, NoExisteDirectorioException,
+			NoExisteArchivoException, CaracteresInvalidosException, NoSeIngresaronParametrosException, ParametroInvalidoException {
+		VerificadorDeParametros lectorDeParametros = new VerificadorDeParametros();
+		lectorDeParametros.lectorDeParametros(arg);
 	}
-	
-	public static void escribirEnCarpeta (boolean escribir) throws IOException{
-	      bw = new BufferedWriter(new FileWriter("index.html"));
-	      bw.write("Se genera el index.html");
-	}
+
 }
